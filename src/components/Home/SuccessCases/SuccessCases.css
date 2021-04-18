@@ -1,0 +1,38 @@
+.cases-section{
+    padding: 100px 0 50px 0;
+}
+
+.card.cases-card {
+    position: relative;
+    background: transparent;
+    border: none;
+}
+
+.cases-image{
+    overflow: hidden;
+}
+.cases-image img{
+    width: 100%;
+    transition: 0.3s;
+}
+
+.cases-details {
+    position: absolute;
+    left: 0;
+    right: 0;
+    display: flex;
+    align-items: center;
+    place-content: center;
+    height: 100%;
+    background: #1c1c1c81;
+    color: white;
+    opacity: 0;
+    transition: 0.3s;
+}
+
+.card.cases-card:hover .cases-details{
+    opacity: 1;
+}
+.card.cases-card:hover .cases-image img{
+    transform: scale(1.1);
+}

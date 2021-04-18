@@ -1,0 +1,35 @@
+.service-section {
+    padding: 80px 0;
+}
+
+.service-box {
+    cursor: pointer;
+    position: relative;
+    background: transparent !important;
+    border-radius: 10px !important;
+    overflow: hidden;
+}
+
+.service-image {
+    overflow: hidden;
+}
+.service-image img {
+    width: 100%;
+    height: 280px;
+}
+
+.service-box:hover .service-image img {
+    animation: imageAnimation 1s infinite;
+    animation-timing-function:cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+@keyframes imageAnimation{
+    0%{
+        -webkit-transform: scale(1);
+        transform: scale(1);
+    }
+    100%{
+        -webkit-transform: scale(1.5);
+        transform: scale(1.3);
+    }
+}

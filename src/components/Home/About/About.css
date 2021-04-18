@@ -1,0 +1,9 @@
+.about-section{
+   background: #151515;
+   color: white;
+}
+
+.about-section .about-image{
+    width: 100%;
+    height: 100%;
+}
