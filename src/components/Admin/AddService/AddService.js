@@ -26,7 +26,7 @@ const AddService = () => {
         }
         else {
             const newService = { ...data, image: imageUrl }
-            fetch('http://localhost:4000/addService', {
+            fetch('https://diligent-detectives-server.herokuapp.com/addService', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
@@ -37,6 +37,7 @@ const AddService = () => {
                 .then(data => {
                     if (data) {
                         alert('Service Successfully Added')
+                        window.location.reload()
                     }
                 })
         }

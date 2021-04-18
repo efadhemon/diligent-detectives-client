@@ -7,7 +7,7 @@ const ManageService = () => {
     const [services, setServices] = useState([])
 
     useEffect(() => {
-        fetch('http://localhost:4000/service')
+        fetch('https://diligent-detectives-server.herokuapp.com/service')
             .then(res => res.json())
             .then(data => setServices(data))
     }, [])
@@ -16,7 +16,7 @@ const ManageService = () => {
         // eslint-disable-next-line no-restricted-globals
         const deleteConfirm = confirm('Are you sure to delete this product')
         if (deleteConfirm) {
-            fetch(`http://localhost:4000/deleteService/${id}`, {
+            fetch(`https://diligent-detectives-server.herokuapp.com/deleteService/${id}`, {
                 method: 'DELETE'
             })
                 .then(res => res.json())
@@ -26,10 +26,6 @@ const ManageService = () => {
                     }
                 })
         }
-
-    }
-
-    const handleEditService = () => {
 
     }
 

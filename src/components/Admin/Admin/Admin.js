@@ -22,7 +22,7 @@ const Admin = () => {
     const [error, setError] = useState(false);
 
     const onSubmit = data => {
-        fetch(`http://localhost:4000/admin?email=${data.email}`)
+        fetch(`https://diligent-detectives-server.herokuapp.com/admin?email=${data.email}`)
         .then(res => res.json())
         .then(result => {
             sessionStorage.setItem('admin', JSON.stringify(data));

@@ -7,7 +7,7 @@ const BookingList = () => {
     const [services, setServices] = useState([]);
 
     useEffect(() => {
-        fetch(`http://localhost:4000/bookings?email=${clientInfo.email}`)
+        fetch(`https://diligent-detectives-server.herokuapp.com/bookings?email=${clientInfo.email}`)
             .then(res => res.json())
             .then(data => setServices(data))
     }, [])

@@ -44,7 +44,7 @@ const Footer = () => {
                         </div>
                     </FooterCol>
                 </div>
-                <div className="copyRight text-center py-3">
+                <div className="copyRight text-center text-white py-3">
                     <p>Copyright {(new Date()).getFullYear()} All Rights Reserved</p>
                 </div>
             </div>

@@ -6,7 +6,7 @@ const ClientDataTable = ({ client, index }) => {
         const newStatus = e.target.value;
         const id = e.target.id;
 
-        fetch(`http://localhost:4000/updateStatus/${id}`, {
+        fetch(`https://diligent-detectives-server.herokuapp.com/updateStatus/${id}`, {
             method: 'PATCH',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ newStatus })

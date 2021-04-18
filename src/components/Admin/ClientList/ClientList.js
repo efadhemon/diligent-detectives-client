@@ -5,7 +5,7 @@ const ClientList = () => {
     const [clients, setClients] = useState([])
 
     useEffect(() => {
-        fetch(`http://localhost:4000/clients`)
+        fetch(`https://diligent-detectives-server.herokuapp.com/clients`)
             .then(res => res.json())
             .then(data => setClients(data));
     }, [])

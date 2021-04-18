@@ -14,7 +14,7 @@ const Book = () => {
   const handlePaymentSuccess = paymentId => {
     console.log(paymentId);
     const bookingDetails = { client_name: clientInfo.name, client_email: clientInfo.email, serviceInfo: { ...serviceInfo }, paymentId, status: 'Pending', bookingTime: new Date() }
-    fetch('http://localhost:4000/addBooking', {
+    fetch('https://diligent-detectives-server.herokuapp.com/addBooking', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'

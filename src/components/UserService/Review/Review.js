@@ -26,7 +26,7 @@ const Review = () => {
         }
         else {
             const newReview = { ...data, image: imageUrl }
-            fetch('http://localhost:4000/postReview', {
+            fetch('https://diligent-detectives-server.herokuapp.com/postReview', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
@@ -36,7 +36,8 @@ const Review = () => {
                 .then(res => res.json())
                 .then(data => {
                     if (data) {
-                        alert('Product Successfully Added')
+                        alert('Thanks for your review')
+                        window.location.reload()
                     }
                 })
         }

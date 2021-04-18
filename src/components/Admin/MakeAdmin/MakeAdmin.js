@@ -5,7 +5,7 @@ const MakeAdmin = () => {
 
     const { register, handleSubmit, errors } = useForm();
     const onSubmit = data => {
-        fetch('http://localhost:4000/addAdmin', {
+        fetch('https://diligent-detectives-server.herokuapp.com/addAdmin', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
