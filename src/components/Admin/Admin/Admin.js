@@ -19,31 +19,35 @@ const Admin = () => {
 
     const { register, handleSubmit,  errors } = useForm();
 
-    const [error, setError] = useState(false);
+    const [error, setError] = useState(null);
 
     const onSubmit = data => {
         fetch(`https://diligent-detectives-server.herokuapp.com/admin?email=${data.email}`)
         .then(res => res.json())
         .then(result => {
-            sessionStorage.setItem('admin', JSON.stringify(data));
-            window.location.reload()
+            if (result.email === loggedInUser.email) {
+                sessionStorage.setItem('admin', JSON.stringify(result.email));
+                window.location.reload()
+            }else{
+                setError('Please login with this email');
+            }
         })
         .catch(err=> {
-            setError(true);
+            setError('Your Are Not An Admin');
         })
     };
 
-    if (admin.email !== loggedInUser.email) {
+    if (admin !== loggedInUser.email) {
         return (
             <div className="text-center mt-5">
-                <h1>Please Verify that you are a admin</h1>
+                <h1>Please Verify that you are an admin</h1>
                 <form className="mt-4" onSubmit={handleSubmit(onSubmit)}>
                     <input onChange={()=> setError(false)} className="verify-admin" placeholder="Enter your email" name="email" ref={register({ required: true })} />
                     <input className="verify-btn btn-brand" type="submit" value="Verify" />
-                    {errors.email && <p className="text-warning">This field is required</p>}
+                    {errors.email && <p className="text-danger mt-4">This field is required</p>}
                 </form>
                 {
-                    error && <h1 className="text-danger mt-5">Your Are Not An Admin</h1>
+                    error && <h1 className="text-danger mt-5">{error}</h1>
                 }
             </div>
         );

@@ -16,7 +16,7 @@ const Sidebar = () => {
     }
 
     return (
-        <div className="sidebar h-100 d-flex flex-column justify-content-between py-5 px-4">
+        <div className="sidebar d-flex flex-column justify-content-between py-5 px-4">
             <ul className="list-unstyled">
                 {mainPath === 'user' &&
                     <>

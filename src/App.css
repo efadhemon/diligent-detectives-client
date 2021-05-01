@@ -98,6 +98,7 @@ input::placeholder, textarea::placeholder {
 
 .background-light {
     background-color: #d3d3d36e;
+    width: 100%;
 }
 
 /* Responsive css */

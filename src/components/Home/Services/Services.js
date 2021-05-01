@@ -33,6 +33,9 @@ const Services = () => {
                         services.map(service => <div key={service._id} onClick={() => handleService(service)} className="service-box card" >
                             <div className="service-image">
                                 <img src={service.image} alt="" className="card-img-top" />
+                                <div className="image-text">
+                                    <h2>Click to take service</h2>
+                                </div>
                             </div>
                             <div className="card-body service-details bg-dark text-white text-center">
                                 <h4>{service.name}</h4>

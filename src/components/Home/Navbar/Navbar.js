@@ -67,7 +67,7 @@ const Navbar = () => {
             <div id="loggedIn-user-info" className="loggedIn-user-info display-none">
                 <img src={loggedInUser.photo ? loggedInUser.photo : AvatarFace} alt="" />
                 <h3>{loggedInUser.name}</h3>
-                <p className="text-black">{loggedInUser.email}</p>
+                <p>{loggedInUser.email}</p>
                 <button className="btn-brand" onClick={signOut}>Log Out</button>
             </div>
         </div>

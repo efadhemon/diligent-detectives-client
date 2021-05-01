@@ -35,7 +35,7 @@ const ManageService = () => {
                 <h1>Manage Service</h1>
                 <p className="text-center text-secondary"><span>Design By</span> <br /> <span> Developer Emon</span></p>
             </div>
-            <div style={{height: '90vh'}} className="background-light padding-5">
+            <div style={{height: '90vh'}}  className="background-light padding-5">
                 <div className="bg-white p-3 border-radius-10">
                     <table className="table table-borderless text-center">
                         <thead className="background-light">
@@ -49,7 +49,7 @@ const ManageService = () => {
                         <tbody>
                             {
                                 services.map((service, index) =>
-                                    <tr id={`${service._id}`}>
+                                    <tr key={service._id} id={`${service._id}`}>
                                         <td>{index + 1}</td>
                                         <td>{service.name}</td>
                                         <td>{service.cost}</td>
