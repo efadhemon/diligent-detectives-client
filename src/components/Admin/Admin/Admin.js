@@ -13,8 +13,8 @@ import ManageService from '../ManageService/ManageService';
 
 const Admin = () => {
 
-    const admin = JSON.parse(sessionStorage.getItem('admin')) || {};
-    const loggedInUser = JSON.parse(sessionStorage.getItem('loggedInUser')) || {} ;
+    const admin = JSON.parse(localStorage.getItem('admin')) || {};
+    const loggedInUser = JSON.parse(localStorage.getItem('loggedInUser')) || {} ;
 
 
     const { register, handleSubmit,  errors } = useForm();
@@ -26,7 +26,7 @@ const Admin = () => {
         .then(res => res.json())
         .then(result => {
             if (result.email === loggedInUser.email) {
-                sessionStorage.setItem('admin', JSON.stringify(result.email));
+                localStorage.setItem('admin', JSON.stringify(result.email));
                 window.location.reload()
             }else{
                 setError('Please login with this email');

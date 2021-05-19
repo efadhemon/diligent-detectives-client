@@ -4,8 +4,10 @@ import { useState } from 'react';
 import { useHistory, useLocation } from 'react-router';
 import { createUserWithEmailAndPassword, handleFbSingIn, handleGoogleSignIn, initializeLoginFramework, signInWithEmailAndPassword } from './LoginManager';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faFacebook, faGoogle } from '@fortawesome/free-brands-svg-icons';
 import { faEyeSlash, faEye } from '@fortawesome/free-solid-svg-icons';
+import facebook from '../../../images/facebook.png';
+import google from '../../../images/google.png';
+
 
 
 const Login = () => {
@@ -46,7 +48,7 @@ const Login = () => {
 
     const handleResponse = (res, redirect) => {
         setUser(res);
-        sessionStorage.setItem('loggedInUser', JSON.stringify(res))
+        localStorage.setItem('loggedInUser', JSON.stringify(res))
         if (res.success && redirect) {
             history.replace(from);
             window.location.reload()
@@ -123,6 +125,15 @@ const Login = () => {
         }
 
         if (newUser) {
+
+            const newUserPassword = document.getElementById('new-user-password').getAttribute('type');
+            if (newUserPassword === 'password') {
+                document.getElementById('password').setAttribute('type', 'text')
+            }
+            if (newUserPassword === 'text') {
+                document.getElementById('password').setAttribute('type', 'password')
+            }
+
             const confirmPasswordAttribute = document.getElementById('confirm-password').getAttribute('type');
             if (confirmPasswordAttribute === 'password') {
                 document.getElementById('confirm-password').setAttribute('type', 'text')
@@ -141,54 +152,72 @@ const Login = () => {
 
     }
 
+
+    const handleRegister = () => {
+        document.getElementById("login").style.left = "-400px";
+        document.getElementById("register").style.left = "50px";
+        document.getElementById("btn").style.left = "110px";
+        setNewUser(true)
+    }
+
+    const handleLogin = () => {
+        document.getElementById("login").style.left = "50px";
+        document.getElementById("register").style.left = "450px";
+        document.getElementById("btn").style.left = "0px";
+        setNewUser(false)
+    }
+
     return (
         <div className="container">
-            <div className="text-center">
-            <div className="login-with-email-pass">
-                <form className="form-container" onSubmit={handleSubmit}>
-                    {
-                        newUser &&
-                        <input type="text" onBlur={handleChange} name="name" placeholder="Full Name" required />
-                    }
-                    <input type="email" onBlur={handleChange} name="email" placeholder="Email" required />
 
-                    <div style={{ position: 'relative', width: '100%' }}>
-                        <input type="password" onFocus={() => setFromValidationError('')} onBlur={handleChange} name="password" placeholder="Password" id="password" required />
-                        <span onClick={showPassword} className="show-password"><FontAwesomeIcon id='show-password-icon' icon={togglePasswordIcon} /></span>
-                    </div>
+            <div className="login-place">
+                <div className="btnbox">
 
-                    {
-                        !newUser &&
-                        <div className="rememberME-and-forgot-box">
-                            <div className="remember-me">
-                                <input type="checkbox" name="remember" id="remember" />
-                                <label htmlFor="remember">Remember Me</label>
-                            </div>
-                            <div className="forgot-password">
-                                <span>Forgot Password</span>
-                            </div>
+                    <div id="btn"></div>
 
-                        </div>
-                    }
+                    <button type="button" className="toggle-btn" onClick={handleLogin}>Log In</button>
 
-                    {
-                        newUser &&
-                        <div style={{ position: 'relative', width: '100%' }}>
-                            <input type="password" onBlur={handleChange} name="Confirm-password" placeholder="Confirm Password" id="confirm-password" required />
-                            <span onClick={showPassword} className="show-password"><FontAwesomeIcon id='show-confirm-password-icon' icon={togglePasswordIcon} /></span>
-                        </div>
-                    }
+                    <button type="button" className="toggle-btn" onClick={handleRegister}>Register</button>
+                </div>
+                <div className="social-icons">
 
+                    <img onClick={fbSingIn} src={facebook} alt="" />
+                    <img onClick={googleSignIn} src={google} alt="" />
 
-                    <input className="btn-brand" type="submit" value={newUser ? 'Create an account' : 'LOGIN'} />
-                </form>
-
-                <div style={{ display: 'flex', placeContent: 'center' }}>
-                    <b>{newUser ? 'Already have an account. ' : 'Don’t have an account? '}</b>
-                    <span className="login-link" onClick={() => setNewUser(!newUser)}>{newUser ? ' Login' : ' Create an account'}</span>
                 </div>
 
-                <div className="error-box">
+
+                <form onSubmit={handleSubmit} id="login" className="input-box">
+                    <input type="email" className="input-field" onBlur={handleChange} name="email" placeholder="Email" required />
+                    <div style={{ position: 'relative', width: '100%' }}>
+                        <input className="input-field" type="password" onFocus={() => setFromValidationError('')} onBlur={handleChange} name="password" placeholder="Password" id="password" required />
+                        <span onClick={showPassword} className="show-password"><FontAwesomeIcon id='show-password-icon' icon={togglePasswordIcon} /></span>
+                    </div>
+                    <input type="checkbox" className="checkbox" /><span>Rememder Password</span>
+                    <input type="submit" className="submit-btn" value="Log In" />
+                </form>
+
+
+                <form onSubmit={handleSubmit} id="register" className="input-box">
+                    <input type="text" className="input-field" onBlur={handleChange} name="name" placeholder="Full Name" required />
+                    <input type="email" className="input-field" onBlur={handleChange} name="email" placeholder="Email" required />
+                    <div style={{ position: 'relative', width: '100%' }}>
+                        <input className="input-field" type="password" onFocus={() => setFromValidationError('')} onBlur={handleChange} name="password" placeholder="Password" id="new-user-password" required />
+                        <span onClick={showPassword} className="show-password"><FontAwesomeIcon id='show-password-icon' icon={togglePasswordIcon} /></span>
+                    </div>
+                    <div style={{ position: 'relative', width: '100%' }}>
+                        <input className="input-field" type="password" onBlur={handleChange} name="Confirm-password" placeholder="Confirm Password" id="confirm-password" required />
+                        <span onClick={showPassword} className="show-password"><FontAwesomeIcon id='show-confirm-password-icon' icon={togglePasswordIcon} /></span>
+                    </div>
+                    <input type="checkbox" className="checkbox" /><span>I agree to the terms and conditions</span>
+                    <button type="submit" className="submit-btn">Register</button>
+                </form>
+                <div onClick={() =>history.push('/')} className="back-to-home">
+                    <span>x</span>
+                </div>
+            </div>
+
+                <div className="error-box text-center">
                     {
                         newUser && fromValidationError &&
                         <p id="fromValidationError">{fromValidationError}</p>
@@ -201,18 +230,6 @@ const Login = () => {
 
             </div>
 
-            <div className="or-line">
-                <span></span>
-                <b>Or</b>
-                <span></span>
-            </div>
-
-            <div className="sign-in-with-social">
-                <p onClick={googleSignIn}><FontAwesomeIcon icon={faGoogle} className="social-icon google-icon" /> <span>Sign in with Google</span></p>
-                <p onClick={fbSingIn}><FontAwesomeIcon icon={faFacebook} className="social-icon facebook-icon" /> <span>Sign in with Facebook</span></p>
-            </div>
-            </div>
-        </div>
     );
 };
 

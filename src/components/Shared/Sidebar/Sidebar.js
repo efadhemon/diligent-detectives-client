@@ -10,8 +10,8 @@ const Sidebar = () => {
     const mainPath = pathname.split('/')[1];
 
     const signOut = () => {
-        sessionStorage.removeItem('loggedInUser')
-        sessionStorage.removeItem('admin')
+        localStorage.removeItem('loggedInUser')
+        localStorage.removeItem('admin')
         window.location.reload();
     }
 

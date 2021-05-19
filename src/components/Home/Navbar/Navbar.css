@@ -1,28 +1,26 @@
 
 .header{
-    margin-bottom: 80px;
+    height: 100px;
 }
 
 .header .navbar{
-    background: linear-gradient(to right, rgb(236, 0, 140), rgb(252, 103, 103));
-    padding: 15px;
+    background: #151515;
+    z-index: 3500;
+}
+.header .navbar.bg-brand{
+    background: linear-gradient(to right, rgb(236, 0, 140), rgb(252, 103, 103)) !important;
 }
 .header .navbar .brand-logo{
     font-size: 30px;
     font-weight: 600;
-    color: white;
-}
-.header .navbar .brand-logo:hover{
-    color: white;
+    color: white !important;
 }
 
 .header .nav-item .nav-link{
-    margin: 0 20px;
+    margin: 0 10px;
     color: white !important;
-    font-size: 20px;
-    font-weight: 500;
-    border-radius: 10px;
-    transition: 0.3s;
+    font-size: 18px;
+    font-weight: 400;
 }
 
 .header .nav-item .nav-link.user-avatar{
@@ -32,30 +30,31 @@
 }
 
 .header .nav-item .nav-link.login-btn {
-    background-color: rgb(236, 0, 140) !important;
+    background: linear-gradient(to right, rgb(236, 0, 140), rgb(252, 103, 103));
+    color: white !important;
+    padding: 10px 20px;
+    border-radius: 50px;
 }
 
 .header .navbar-nav{
     align-items: center;
 }
 
-.loggedIn-user-info {
+#loggedIn-user-info {
     width: 300px;
     text-align: center;
     padding: 20px;
     border-radius: 10px;
-    position: absolute;
+    position: fixed;
     z-index: 100;
     right: 20px;
+    top: 100px;
     background-color: #393939;
     border: 1px solid #6b6b6b;
     color: white;
 }
-.display-none{
-    display: none;
-}
 
-.loggedIn-user-info img {
+#loggedIn-user-info img {
     border-radius: 50%;
     width: 100px;
     margin-bottom: 10px;

@@ -35,7 +35,7 @@ input::placeholder, textarea::placeholder {
 }
 
 .text-brand {
-    background: linear-gradient(to right, rgb(236, 0, 140), rgb(252, 103, 103));
+    background: linear-gradient(90deg, rgb(236, 0, 140), rgb(252, 103, 103));
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
 }

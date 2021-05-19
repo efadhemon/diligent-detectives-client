@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import './BookingList.css'
 
 const BookingList = () => {
-    const clientInfo = JSON.parse(sessionStorage.getItem('loggedInUser')) || {}
+    const clientInfo = JSON.parse(localStorage.getItem('loggedInUser')) || {}
 
     const [services, setServices] = useState([]);
 
@@ -10,7 +10,7 @@ const BookingList = () => {
         fetch(`https://diligent-detectives-server.herokuapp.com/bookings?email=${clientInfo.email}`)
             .then(res => res.json())
             .then(data => setServices(data))
-    }, [])
+    }, [clientInfo.email])
 
     return (
         <div className="booking-list">

@@ -8,7 +8,7 @@ const Services = () => {
 
     const handleService = (service) => {
         history.push(`/user/book`);
-        sessionStorage.setItem('service', JSON.stringify(service))
+        localStorage.setItem('service', JSON.stringify(service))
     }
 
     const [services, setServices] = useState([]);

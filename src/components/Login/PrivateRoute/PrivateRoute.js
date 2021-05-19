@@ -5,7 +5,7 @@ import { Redirect, Route } from 'react-router';
 
 const PrivateRoute = ({children, ...rest}) => {
     
-    const loggedInUser = JSON.parse(sessionStorage.getItem('loggedInUser')) || {} ;
+    const loggedInUser = JSON.parse(localStorage.getItem('loggedInUser')) || {} ;
 
     return (
         <Route
