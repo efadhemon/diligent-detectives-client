@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import './App.css'
 import {
   BrowserRouter as Router,
@@ -10,13 +10,26 @@ import Home from './components/Home/Home/Home';
 import Login from './components/Login/Login/Login';
 import PrivateRoute from './components/Login/PrivateRoute/PrivateRoute';
 import UserService from './components/UserService/UserService/UserService';
+import aos from 'aos';
+import 'aos/dist/aos.css';
+import Preloader from './components/Preloader/Preloader';
+
+window.addEventListener('load', function () {
+  setTimeout(() => {
+    document.querySelector('.preloader-container').style.display = 'none';
+  }, 2000)
+})
+
 
 const App = () => {
 
-  
+  useEffect(() => {
+    aos.init({ duration: 2000 })
+  }, [])
 
   return (
     <Router>
+      <Preloader></Preloader>
       <Switch>
         <Route exact path='/'>
           <Home></Home>
