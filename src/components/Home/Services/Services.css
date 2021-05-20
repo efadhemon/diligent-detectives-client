@@ -4,7 +4,6 @@
 
 .service-box {
     cursor: pointer;
-    position: relative;
 }
 
 .service-image {
@@ -16,20 +15,6 @@
 .service-image img {
     width: 100%;
     height: 280px;
-}
-
-.image-text {
-    position: absolute;
-    background: #515050a1;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    display: flex;
-    align-items: center;
-    place-content: center;
-    color: white;
-    opacity: 0;
     transition: 0.3s;
 }
 
@@ -38,23 +23,7 @@
 }
 
 .service-box:hover .service-image img {
-    animation: imageAnimation 2s infinite;
-    animation-timing-function: cubic-bezier(0.25, 0.46, 0.45, 0.94);
-}
-
-@keyframes imageAnimation {
-    0% {
-        -webkit-transform: scale(1);
-        transform: scale(1);
-    }
-    50% {
-        -webkit-transform: scale(1.3);
-        transform: scale(1.3);
-    }
-    100% {
-        -webkit-transform: scale(1);
-        transform: scale(1);
-    }
+    transform: scale(1.1);
 }
 
 .service-details {
@@ -64,26 +33,22 @@
     text-align: center;
     background: #ffffff;
     padding: 20px;
-}
-
-.service-box:hover .service-details {
-    height: fit-content;
+    position: relative;
+    overflow: hidden;
     transition: 0.3s;
-    animation: service-details-animation 2s infinite;
 }
 
-@keyframes service-details-animation {
-    0% {
-        margin: auto;
-        margin-top: 0;
-    }
-    50% {
-        margin: auto;
-        margin-top: -20px;
-    }
-    100% {
+.service-details .book-btn {
+    position: absolute;
+    bottom: -100px;
+    width: 100%;
+    margin: auto;
+    transition: 0.3s;
+}
 
-        margin: auto;
-        margin-top: 0;
-    }
+.service-box:hover .book-btn {
+    position: initial;
+    bottom: 0;
+    width: 100%;
+    margin: auto;
 }

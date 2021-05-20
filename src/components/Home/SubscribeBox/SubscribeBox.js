@@ -23,8 +23,8 @@ const SubscribeBox = () => {
                     <div class="sub-box-single col-md-4 pb-4">
 
                         <h2>CONTACTS NOW</h2>
-                        <p>Call Us : +(98) 888 7777</p>
-                        <p>Email Us : sample-email@example.com</p>
+                        <p>Call Us : +880 19982 00160</p>
+                        <p>Email Us : emonhossain0317@gmail.com</p>
 
                     </div>
 

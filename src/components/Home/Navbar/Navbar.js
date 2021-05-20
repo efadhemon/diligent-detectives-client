@@ -32,7 +32,7 @@ const Navbar = () => {
 
     return (
         <header className="header">
-            <nav className={isfixed ? "navbar navbar-expand-lg navbar-light fixed-top shadow-sm bg-white" : "navbar navbar-expand-lg navbar-light"}>
+            <nav className={isfixed ? "navbar navbar-expand-lg navbar-light fixed-top shadow-sm bg-white" : "navbar navbar-expand-lg navbar-light bg-white"}>
                 <div className="container-fluid">
                     <Link className="navbar-brand brand-logo text-gradient" to="/">Diligent Detectives</Link>
                     <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -41,19 +41,16 @@ const Navbar = () => {
                     <div className="collapse navbar-collapse" id="navbarNav">
                         <ul className="navbar-nav ml-auto">
                             <li className="nav-item">
-                                <Link className="nav-link" aria-current="page" to="/">Home</Link>
+                                <Link className="nav-link" to="/">Home</Link>
                             </li>
                             <li className="nav-item">
-                                <a className="nav-link" aria-current="page" href="#service">Service</a>
+                                <a className="nav-link" href="#service">Services</a>
                             </li>
                             <li className="nav-item">
-                                <a className="nav-link" aria-current="page" href="#about">About Us</a>
+                                <a className="nav-link" href="#contact">Contact</a>
                             </li>
                             <li className="nav-item">
-                                <a className="nav-link" aria-current="page" href="#contact">Contact</a>
-                            </li>
-                            <li className="nav-item">
-                                <Link className="nav-link" to="/user/book">User Dashboard</Link>
+                                <Link className="nav-link" to="/user/book">Dashboard</Link>
                             </li>
                             <li className="nav-item">
                                 <Link className="nav-link" to="/admin/client-list">Admin</Link>

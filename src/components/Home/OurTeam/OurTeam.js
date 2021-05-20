@@ -42,7 +42,7 @@ const OurTeam = () => {
     ];
 
     return (
-        <section id="our-team" className="py-5">
+        <section id="our-team" className="py-5 overflow-hidden">
             <div className="container">
 
                 <div className="section-title">
@@ -53,7 +53,7 @@ const OurTeam = () => {
                 <div className="row">
 
                     {
-                        teamMembers.map((member => <div key={member.id} data-aos={member.animation} className="col-md-3 d-flex">
+                        teamMembers.map((member => <div key={member.id} data-aos={member.animation} className="col-md-3 col-sm-6 d-flex mb-5 mb-md-0">
                             <div className="team-mate shadow">
                                 <div className="team-mate-img">
 

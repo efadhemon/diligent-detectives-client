@@ -16,11 +16,12 @@ const Testimonials = () => {
     return (
         <section className="testimonials">
             <div className="container">
-                <div className="section-header text-center mb-5">
-                    <div className="section-title">
-                        <h2>Testimonials</h2>
-                        <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quo quaerat, nihil fuga illo nemo dolores.</p>
-                    </div>
+                <div className="section-title">
+                    <h2>Testimonials</h2>
+                </div>
+                <div className="row align-items-center mb-5">
+                    <h1 className="col-md-7 text-gradient">-- What Our Clients Say</h1>
+                    <p className="col-md-5">Lorem ipsum dolor sit amet consectetur adipisicing elit. Et nam quidem quos provident. Impedit praesentium cumque soluta iusto atque officiis.</p>
                 </div>
                 <div className="display-grid-col-3">
                     {

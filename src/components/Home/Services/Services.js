@@ -34,15 +34,15 @@ const Services = () => {
                     {
                         services.map(service => <div data-aos="fade-up" key={service._id} onClick={() => handleService(service)} className="service-box" >
                             <div className="service-image">
-                                <img src={service.image} alt="" className="" />
-                                <div className="image-text">
-                                    <button className="btn-brand w-75">Take Service</button>
-                                </div>
+                                <img src={service.image} alt="" />
                             </div>
                             <div className="service-details shadow">
-                                <h4>{service.name}</h4>
-                                <h6>$ {service.cost}</h6>
+                                <h3>{service.name}</h3>
+                                <h4 className="text-brand">$ {service.cost}</h4>
                                 <p className="text-justif">{service.description}</p>
+                                <div className="book-btn">
+                                    <button className="btn-brand">Book Service</button>
+                                </div>
                             </div>
                         </div>)
                     }

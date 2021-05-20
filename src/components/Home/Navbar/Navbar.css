@@ -27,7 +27,7 @@
 }
 
 .header .nav-item .nav-link.login-btn {
-    background: linear-gradient(to right, rgb(236, 0, 140), rgb(252, 103, 103));
+    background-color: #6c5ce7;
     color: white !important;
     padding: 10px 20px;
     border-radius: 50px;
