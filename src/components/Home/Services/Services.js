@@ -8,7 +8,7 @@ const Services = () => {
 
     const handleService = (service) => {
         history.push(`/user/book`);
-        localStorage.setItem('service', JSON.stringify(service))
+        sessionStorage.setItem('service', JSON.stringify(service))
     }
 
     const [services, setServices] = useState([]);
@@ -22,7 +22,9 @@ const Services = () => {
     return (
         <section id="service" className="service-section">
             <div className="container">
-                <h1 className="text-center text-uppercase text-brand mb-5">Our Services</h1>
+                <div className="section-title">
+                    <h2>Our Services</h2>
+                </div>
                 <div className="row align-items-center mb-5">
                     <h1 className="col-md-7 text-gradient">-- Offering Private <br /> Investigation Services</h1>
                     <p className="col-md-5">Lorem ipsum dolor sit amet consectetur adipisicing elit. Et nam quidem quos provident. Impedit praesentium cumque soluta iusto atque officiis.</p>
@@ -30,14 +32,14 @@ const Services = () => {
                 <div className="display-grid-col-3">
 
                     {
-                        services.map(service => <div key={service._id} onClick={() => handleService(service)} className="service-box card" >
+                        services.map(service => <div data-aos="fade-up" key={service._id} onClick={() => handleService(service)} className="service-box" >
                             <div className="service-image">
-                                <img src={service.image} alt="" className="card-img-top" />
+                                <img src={service.image} alt="" className="" />
                                 <div className="image-text">
-                                    <h2>Click to take service</h2>
+                                    <button className="btn-brand w-75">Take Service</button>
                                 </div>
                             </div>
-                            <div className="card-body service-details bg-dark text-white text-center">
+                            <div className="service-details shadow">
                                 <h4>{service.name}</h4>
                                 <h6>$ {service.cost}</h6>
                                 <p className="text-justif">{service.description}</p>

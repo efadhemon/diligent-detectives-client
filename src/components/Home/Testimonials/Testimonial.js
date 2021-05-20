@@ -3,7 +3,7 @@ import React from 'react';
 const Testimonial = (props) => {
     const {quote,name,from ,image} = props.review;
     return (
-        <div className="testimonial-box p-4 rounded">
+        <div className="p-4 rounded shadow">
             <div className="d-flex  align-items-center">
                 <img className="rounded-circle" src={image} alt="" width="80" height="80"/>
                 <div className="ml-4">

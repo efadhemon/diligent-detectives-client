@@ -6,7 +6,7 @@ import ProcessPayment from '../ProcessPayment/ProcessPayment';
 
 const Book = () => {
 
-  const serviceInfo = JSON.parse(localStorage.getItem('service')) || { status: null }
+  const serviceInfo = JSON.parse(sessionStorage.getItem('service')) || { status: null }
   const clientInfo = JSON.parse(localStorage.getItem('loggedInUser')) || {}
 
   const history = useHistory();
@@ -25,7 +25,7 @@ const Book = () => {
       .then(data => {
         if (data) {
           alert('Thanks, Your Booking is Successful');
-          localStorage.removeItem('service');
+          sessionStorage.removeItem('service');
           history.push('/user/booking-list')
         }
       })

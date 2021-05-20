@@ -4,21 +4,18 @@
 }
 
 .header .navbar{
-    background: #151515;
     z-index: 3500;
 }
-.header .navbar.bg-brand{
-    background: linear-gradient(to right, rgb(236, 0, 140), rgb(252, 103, 103)) !important;
-}
+
 .header .navbar .brand-logo{
-    font-size: 30px;
-    font-weight: 600;
-    color: white !important;
+    font-size: 40px;
+    font-weight: 700;
+    color: black !important;
 }
 
 .header .nav-item .nav-link{
     margin: 0 10px;
-    color: white !important;
+    color: black !important;
     font-size: 18px;
     font-weight: 400;
 }

@@ -1,16 +1,11 @@
 html {
     scroll-behavior: smooth;
 }
-html, body{
+
+html, body {
     height: 100%;
     min-height: 100%;
     margin: 0;
-}
-section{
-    background: #151515 !important;
-}
-section p{
-    color: #e9e9e9;
 }
 
 .input {
@@ -40,14 +35,47 @@ input::placeholder, textarea::placeholder {
     -webkit-text-fill-color: transparent;
 }
 
+
 .text-gradient {
-    background: linear-gradient( 90deg, #d1aad7, #c88bc4 25.17%, #7b8fdd 50%, #86bff2 73.09%, #bbdef2);
+    background-color: #CA4246;
+    background-image: linear-gradient( 45deg, #CA4246 16.666%, #E16541 16.666%, #E16541 33.333%, #F18F43 33.333%, #F18F43 50%, #8B9862 50%, #8B9862 66.666%, #476098 66.666%, #476098 83.333%, #A7489B 83.333%);
+    background-size: 100%;
+    background-repeat: repeat;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
+    animation: rainbow-text-simple-animation-rev 0.75s ease forwards;
+}
+
+.text-gradient:hover {
+    animation: rainbow-text-simple-animation 0.5s ease-in forwards;
+}
+
+@keyframes rainbow-text-simple-animation-rev {
+    0% {
+        background-size: 650%;
+    }
+    40% {
+        background-size: 650%;
+    }
+    100% {
+        background-size: 100%;
+    }
+}
+
+@keyframes rainbow-text-simple-animation {
+    0% {
+        background-size: 100%;
+    }
+    80% {
+        background-size: 650%;
+    }
+    100% {
+        background-size: 650%;
+    }
 }
 
 .btn-brand {
-    background: linear-gradient(to right, rgb(236, 0, 140), rgb(252, 103, 103));
+    background-color: #0099ff;
     color: white !important;
     font-size: 18px;
     font-weight: 500;
@@ -59,7 +87,7 @@ input::placeholder, textarea::placeholder {
 }
 
 .btn-brand:hover {
-    background: linear-gradient(to right, rgb(252, 103, 103), rgb(236, 0, 140));
+    background-color: #0488e0;
 }
 
 .width-50 {
@@ -90,15 +118,43 @@ input::placeholder, textarea::placeholder {
     border-radius: 10px !important;
 }
 
-.section-break {
-    width: 100%;
-    height: 1px;
-    background: rgb(236, 0, 140);
-}
-
 .background-light {
     background-color: #d3d3d36e;
     width: 100%;
+}
+
+.section-title {
+	max-width: 1140px;
+}
+
+
+.section-title h2 {
+	text-align: center;
+	font-size: 40px;
+	font-weight: 600;
+	margin-bottom: 15px;
+	position: relative;
+    padding: 15px;
+    text-transform: uppercase;
+}
+
+.section-title h2:after {
+	content: "";
+	position: absolute;
+	background: #fb5200;
+	bottom: 0;width: 65px;
+	border-bottom: 4px solid #fb5200;
+	left: 50%;
+	transform: translatex(-50%);
+}
+
+.section-title p {
+    text-align: center;
+    margin: auto;
+    margin-bottom: 50px;
+    color: #777;
+    font-size: 16px;
+    line-height: 25px;
 }
 
 /* Responsive css */

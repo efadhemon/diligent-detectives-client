@@ -6,19 +6,22 @@ import Footer from '../Footer/Footer';
 import MainHeader from '../MainHeader/MainHeader';
 import Testimonials from '../Testimonials/Testimonials';
 import SuccessCases from '../SuccessCases/SuccessCases';
+import SubscribeBox from '../SubscribeBox/SubscribeBox';
+import OurTeam from '../OurTeam/OurTeam';
 
 const Home = () => {
     return (
-        <div>
+        <main>
             <MainHeader></MainHeader>
-            <div className="section-break"></div>
             <Services></Services>
             <About></About>
+            <OurTeam></OurTeam>
             <SuccessCases></SuccessCases>
             <Testimonials></Testimonials>
             <Contact></Contact>
+            <SubscribeBox></SubscribeBox>
             <Footer></Footer>
-        </div>
+        </main>
     );
 };
 

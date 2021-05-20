@@ -32,9 +32,9 @@ const Navbar = () => {
 
     return (
         <header className="header">
-            <nav className={isfixed ? "navbar navbar-expand-lg navbar-light fixed-top bg-brand" : "navbar navbar-expand-lg navbar-light"}>
+            <nav className={isfixed ? "navbar navbar-expand-lg navbar-light fixed-top shadow-sm bg-white" : "navbar navbar-expand-lg navbar-light"}>
                 <div className="container-fluid">
-                    <Link className="navbar-brand brand-logo" to="/">Diligent Detectives</Link>
+                    <Link className="navbar-brand brand-logo text-gradient" to="/">Diligent Detectives</Link>
                     <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                         <span className="navbar-toggler-icon"></span>
                     </button>

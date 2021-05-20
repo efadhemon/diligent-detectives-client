@@ -15,6 +15,7 @@ import 'aos/dist/aos.css';
 import Preloader from './components/Preloader/Preloader';
 
 window.addEventListener('load', function () {
+  document.querySelector('.preloader-container').style.opacity = '0';
   setTimeout(() => {
     document.querySelector('.preloader-container').style.display = 'none';
   }, 2000)
