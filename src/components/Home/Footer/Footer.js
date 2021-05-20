@@ -10,16 +10,16 @@ const Footer = () => {
     return (
         <footer id="footer">
 
-            <div class="container">
+            <div className="container">
 
-                <div class="row">
+                <div className="row">
 
-                    <div class="footer-box col-md-3">
+                    <div className="footer-box col-md-3">
 
                         <h3>ABOUT US</h3>
                         <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Harum, odit repudiandae? Unde doloremque nemo aperiam cupiditate nam laudantium voluptatem beatae!</p>
 
-                        <div class="ficons">
+                        <div className="ficons">
 
                             <a href="/"><FontAwesomeIcon icon={faFacebookF} /></a>
                             <a href="/"><FontAwesomeIcon icon={faTwitter} /></a>
@@ -31,22 +31,22 @@ const Footer = () => {
 
                     </div>
 
-                    <div class="footer-box col-md-3">
+                    <div className="footer-box col-md-3">
 
                         <h3>CONTACT US</h3>
 
-                        <div class="contact-icon"><FontAwesomeIcon icon={faHome} /></div>
+                        <div className="contact-icon"><FontAwesomeIcon icon={faHome} /></div>
                         <span id="contacts"> Mohammadpur, Dhaka-1207, Bangladesh</span>
 
-                        <div class="contact-icon"><FontAwesomeIcon icon={faPhone} /></div>
+                        <div className="contact-icon"><FontAwesomeIcon icon={faPhone} /></div>
                         <span id="contacts"> +880 19982 00160 <br /> +880 18712 57744</span>
 
-                        <div class="contact-icon"><FontAwesomeIcon icon={faEnvelope} /></div>
+                        <div className="contact-icon"><FontAwesomeIcon icon={faEnvelope} /></div>
                         <span id="contacts"> emonhossain0317@gmail.com <br /> emon.dev02@gmail.com</span>
 
                     </div>
 
-                    <div class="footer-box col-md-3">
+                    <div className="footer-box col-md-3">
 
                         <h3>USEFULL LINKS</h3>
 
@@ -60,16 +60,16 @@ const Footer = () => {
 
                     </div>
 
-                    <div class="footer-box col-md-3">
+                    <div className="footer-box col-md-3">
                         <h3>Recent Cases</h3>
-                        <div class="fRpost">
+                        <div className="fRpost">
 
-                            <div class="fRpostMeta">
+                            <div className="fRpostMeta">
                                 <span>15</span>
                                 <p>APRIL 2021</p>
                             </div>
 
-                            <div class="fRpostTitle">
+                            <div className="fRpostTitle">
                                 <h3><a href="/">WHERE WE'RE STANDING RIGHT NOW</a></h3>
                                 <p><FontAwesomeIcon icon={faUser} />By Admin </p>
                                 <p><FontAwesomeIcon icon={faComments} />35</p>
@@ -77,13 +77,13 @@ const Footer = () => {
 
                         </div>
 
-                        <div class="fRpost">
-                            <div class="fRpostMeta">
+                        <div className="fRpost">
+                            <div className="fRpostMeta">
                                 <span>25</span>
                                 <p>APRIL 2021</p>
                             </div>
 
-                            <div class="fRpostTitle">
+                            <div className="fRpostTitle">
                                 <h3><a href="/">AND MAYBE KNOWING ISN'T THE POINT</a></h3>
 
                                 <p><FontAwesomeIcon icon={faUser} />By Admin </p>
@@ -96,12 +96,12 @@ const Footer = () => {
 
                 </div>
 
-                <div class="copy-right-container">
-                    <div class="row">
+                <div className="copy-right-container">
+                    <div className="row">
 
-                        <p class="col-md-6">Copyright &copy; {new Date().getFullYear()}, All rights reserved Emon</p>
+                        <p className="col-md-6">Copyright &copy; {new Date().getFullYear()}, All rights reserved Emon</p>
 
-                        <div class="col-md-6 text-right">
+                        <div className="col-md-6 text-right">
                             <ul className="list-unstyled">
                                 <li><Link to="/">FAQS </Link></li>
                                 <li className="mr-4"><Link to="/">Privacy </Link></li>
