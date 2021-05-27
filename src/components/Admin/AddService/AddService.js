@@ -49,7 +49,7 @@ const AddService = () => {
                 <h1>Add Service</h1>
                 <p className="text-center text-secondary"><span>Design By</span> <br /> <span> Developer Emon</span></p>
             </div>
-            <div style={{height: '90vh'}} className="background-light padding-5">
+            <div  className="background-light padding-5">
                 <form className="width-50" onSubmit={handleSubmit(onSubmit)}>
                     <div className="form-group">
                         <label htmlFor="name">Service Name</label>

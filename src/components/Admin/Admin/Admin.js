@@ -10,6 +10,7 @@ import AddService from '../AddService/AddService';
 import ClientList from '../ClientList/ClientList';
 import MakeAdmin from '../MakeAdmin/MakeAdmin';
 import ManageService from '../ManageService/ManageService';
+import ManageTestimonials from '../ManageTestimonials/ManageTestimonials';
 
 const Admin = () => {
 
@@ -71,6 +72,9 @@ const Admin = () => {
                         </Route>
                         <Route path="/admin/manage-service">
                             <ManageService></ManageService>
+                        </Route>
+                        <Route path="/admin/manage-testimonials">
+                            <ManageTestimonials></ManageTestimonials>
                         </Route>
                     </Switch>
                 </div>

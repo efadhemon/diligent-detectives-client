@@ -67,13 +67,13 @@ const Navbar = () => {
                         </ul>
                     </div>
                 </div>
+                <div id="loggedIn-user-info" className="d-none">
+                    <img src={loggedInUser.photo ? loggedInUser.photo : AvatarFace} alt="" />
+                    <h4>{loggedInUser.name}</h4>
+                    <p>{loggedInUser.email}</p>
+                    <button className="btn-brand" onClick={signOut}>Log Out</button>
+                </div>
             </nav>
-            <div id="loggedIn-user-info" className="d-none">
-                <img src={loggedInUser.photo ? loggedInUser.photo : AvatarFace} alt="" />
-                <h3>{loggedInUser.name}</h3>
-                <p>{loggedInUser.email}</p>
-                <button className="btn-brand" onClick={signOut}>Log Out</button>
-            </div>
         </header>
     );
 };

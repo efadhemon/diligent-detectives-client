@@ -4,64 +4,37 @@ footer#footer {
     padding-top: 180px;
 }
 
-.copy-right-container {
-    color: #999;
-    border-top: 1px solid #333;
-    padding: 30px 0;
-}
-
-.copy-right-container ul li {
-    float: right;
- }
-
-.copy-right-container ul li a {
-   text-decoration: none;
-   color: #999;
-}
-
 .footer-box h3 {
     color: white;
     margin-bottom: 20px;
 }
 
-.footer-box p, span {
+.footer-box p, .footer-box span {
     line-height: 25px;
     font-size: 16px;
     color: #999;
 }
 
 .ficons {
-    margin-top: 25px;
+    margin: 25px 0;
+    display: flex;
 }
 
 .ficons a svg{
     color: #999;
-    font-size: 17px;
+    font-size: 20px;
     margin-right: 15px;
-    display: block;
-    float: left;
     transition: 0.3s;
 }
 
-.ficons a i:hover {
+.ficons a svg:hover {
     color: #6c5ce7;
-}
-
-span#contacts {
-    display: block;
-    margin-bottom: 15px;
-    font-size: 16px;
-    line-height: 25px;
 }
 
 .contact-icon svg{
-    display: block;
-    float: left;
     margin-right: 15px;
     color: #6c5ce7;
-    width: 20px;
-    height: 30px;
-    margin-top: 5px;
+    font-size: 20px;
 }
 
 .footer-box ul {
@@ -93,6 +66,7 @@ span#contacts {
 
 .footer-box ul li a:hover {
     color: #6c5ce7;
+    margin-left: 5px;
 }
 
 .fRpost {
@@ -100,7 +74,7 @@ span#contacts {
 }
 
 .fRpostMeta {
-    width: 40px;
+    width: 50px;
     background: #313131;
     padding: 10px;
     color: white;
@@ -150,4 +124,19 @@ span#contacts {
 
 .fRpostTitle p svg{
     margin-right: 5px;
+}
+
+.copy-right-container {
+    color: #999;
+    border-top: 1px solid #333;
+    padding: 30px 0;
+}
+
+.copy-right-container ul {
+    display: flex;
+ }
+
+.copy-right-container ul li a {
+   text-decoration: none;
+   color: #999;
 }

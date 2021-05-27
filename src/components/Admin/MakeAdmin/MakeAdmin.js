@@ -27,7 +27,7 @@ const MakeAdmin = () => {
                 <h1>Make Admin</h1>
                 <p className="text-center text-secondary"><span>Design By</span> <br /> <span> Developer Emon</span></p>
             </div>
-            <div style={{height: '90vh'}} className="background-light padding-5">
+            <div  className="background-light padding-5">
                 <div className="bg-white padding-5 border-radius-10">
                     <form className="width-50" onSubmit={handleSubmit(onSubmit)}>
                         <div className="form-group">

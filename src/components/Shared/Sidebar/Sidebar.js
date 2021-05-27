@@ -18,13 +18,13 @@ const Sidebar = () => {
     return (
         <div className="sidebar d-flex flex-column justify-content-between py-5 px-4">
             <ul className="list-unstyled">
+                <li>
+                    <Link to="/" className="side-bar-link">
+                        <h2 className="text-white"> {'{D}'} Detectives</h2>
+                    </Link>
+                </li>
                 {mainPath === 'user' &&
                     <>
-                        <li>
-                            <Link to="/" className="text-white side-bar-link">
-                                <h3>Diligent Detectives</h3>
-                            </Link>
-                        </li>
                         <li>
                             <Link to="/user/book" className="text-white side-bar-link">
                                 <FontAwesomeIcon icon={faCartPlus} /> <span>Book</span>
@@ -47,12 +47,6 @@ const Sidebar = () => {
                     mainPath === 'admin' &&
                     <>
                         <li>
-                            <Link to="/" className="text-white side-bar-link">
-                                <h3>Diligent Detectives</h3>
-                            </Link>
-                        </li>
-
-                        <li>
                             <Link to="/admin/client-list" className="text-white side-bar-link">
                                 <FontAwesomeIcon icon={faBook} /> <span>Client List</span>
                             </Link>
@@ -70,6 +64,11 @@ const Sidebar = () => {
                         <li>
                             <Link to="/admin/manage-service" className="text-white side-bar-link">
                                 <FontAwesomeIcon icon={faThLarge} /> <span>Manage Service</span>
+                            </Link>
+                        </li>
+                        <li>
+                            <Link to="/admin/manage-testimonials" className="text-white side-bar-link">
+                                <FontAwesomeIcon icon={faCommentAlt} /> <span>Manage Testimonials</span>
                             </Link>
                         </li>
                     </>

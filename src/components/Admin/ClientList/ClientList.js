@@ -16,7 +16,7 @@ const ClientList = () => {
                 <h1>Client List</h1>
                 <p className="text-center text-secondary"><span>Design By</span> <br /> <span> Developer Emon</span></p>
             </div>
-            <div style={{height: '90vh', overflow: 'scroll'}} className="background-light padding-5">
+            <div className="background-light padding-5">
                 <div className="bg-white p-3 border-radius-10">
                     <table className="table table-borderless">
                         <thead className="background-light">

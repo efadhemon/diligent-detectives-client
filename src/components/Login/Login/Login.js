@@ -4,9 +4,10 @@ import { useState } from 'react';
 import { useHistory, useLocation } from 'react-router';
 import { createUserWithEmailAndPassword, handleFbSingIn, handleGoogleSignIn, initializeLoginFramework, signInWithEmailAndPassword } from './LoginManager';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faEyeSlash, faEye } from '@fortawesome/free-solid-svg-icons';
+import { faEyeSlash, faEye, faExpandArrowsAlt } from '@fortawesome/free-solid-svg-icons';
 import facebook from '../../../images/facebook.png';
 import google from '../../../images/google.png';
+import swal from 'sweetalert';
 
 
 
@@ -47,11 +48,14 @@ const Login = () => {
     }
 
     const handleResponse = (res, redirect) => {
-        setUser(res);
-        localStorage.setItem('loggedInUser', JSON.stringify(res))
+
         if (res.success && redirect) {
+            setUser(res);
+            localStorage.setItem('loggedInUser', JSON.stringify(res))
             history.replace(from);
             window.location.reload()
+        } else {
+            swal('Error', res.error, 'error');
         }
     }
 
@@ -64,7 +68,7 @@ const Login = () => {
         if (event.target.name === 'email') {
             isFiledValid = /\S+@\S+\.\S+/.test(event.target.value);
         }
-        if (event.target.name === 'password') {
+        if (event.target.name === 'password' && newUser) {
             isFiledValid = /\d{1}/.test(event.target.value) && event.target.value.length >= 8;
             setPassword(event.target.value)
             if (!isFiledValid) {
@@ -89,9 +93,9 @@ const Login = () => {
     const handleSubmit = (e) => {
 
         if (newUser && user.email && user.password) {
+
             if (password !== confirmPassword) {
-                const confirmPasswordError = "Password and  confirm password doesn't  match";
-                setFromValidationError(confirmPasswordError);
+                swal('Error', "Password and  confirm password doesn't  match", 'error');
             } else {
                 createUserWithEmailAndPassword(user.name, user.email, user.password)
                     .then(res => {
@@ -116,22 +120,14 @@ const Login = () => {
 
     const showPassword = () => {
 
-        const passwordAttribute = document.getElementById('password').getAttribute('type');
-        if (passwordAttribute === 'password') {
-            document.getElementById('password').setAttribute('type', 'text')
-        }
-        if (passwordAttribute === 'text') {
-            document.getElementById('password').setAttribute('type', 'password')
-        }
-
         if (newUser) {
 
             const newUserPassword = document.getElementById('new-user-password').getAttribute('type');
             if (newUserPassword === 'password') {
-                document.getElementById('password').setAttribute('type', 'text')
+                document.getElementById('new-user-password').setAttribute('type', 'text')
             }
             if (newUserPassword === 'text') {
-                document.getElementById('password').setAttribute('type', 'password')
+                document.getElementById('new-user-password').setAttribute('type', 'password')
             }
 
             const confirmPasswordAttribute = document.getElementById('confirm-password').getAttribute('type');
@@ -141,7 +137,18 @@ const Login = () => {
             if (confirmPasswordAttribute === 'text') {
                 document.getElementById('confirm-password').setAttribute('type', 'password')
             }
+
+        } else {
+
+            const passwordAttribute = document.getElementById('password').getAttribute('type');
+            if (passwordAttribute === 'password') {
+                document.getElementById('password').setAttribute('type', 'text')
+            }
+            if (passwordAttribute === 'text') {
+                document.getElementById('password').setAttribute('type', 'password')
+            }
         }
+
 
         if (togglePasswordIcon === faEyeSlash) {
             setTogglePassword(faEye)
@@ -154,16 +161,16 @@ const Login = () => {
 
 
     const handleRegister = () => {
-        document.getElementById("login").style.left = "-400px";
-        document.getElementById("register").style.left = "50px";
-        document.getElementById("btn").style.left = "110px";
+        document.getElementById("login").style.left = "-100%";
+        document.getElementById("register").style.left = "0";
+        document.getElementById("btn").style.left = "50%";
         setNewUser(true)
     }
 
     const handleLogin = () => {
-        document.getElementById("login").style.left = "50px";
-        document.getElementById("register").style.left = "450px";
-        document.getElementById("btn").style.left = "0px";
+        document.getElementById("login").style.left = "0";
+        document.getElementById("register").style.left = "100%";
+        document.getElementById("btn").style.left = "0";
         setNewUser(false)
     }
 
@@ -175,9 +182,9 @@ const Login = () => {
 
                     <div id="btn"></div>
 
-                    <button type="button" className="toggle-btn" onClick={handleLogin}>Log In</button>
+                    <button className="toggle-btn" onClick={handleLogin}>Log In</button>
 
-                    <button type="button" className="toggle-btn" onClick={handleRegister}>Register</button>
+                    <button className="toggle-btn" onClick={handleRegister}>Register</button>
                 </div>
                 <div className="social-icons">
 
@@ -193,7 +200,9 @@ const Login = () => {
                         <input className="input-field" type="password" onFocus={() => setFromValidationError('')} onBlur={handleChange} name="password" placeholder="Password" id="password" required />
                         <span onClick={showPassword} className="show-password"><FontAwesomeIcon id='show-password-icon' icon={togglePasswordIcon} /></span>
                     </div>
-                    <input type="checkbox" className="checkbox" /><span>Rememder Password</span>
+                    <label htmlFor="forget-pass" className="d-flex align-items-center">
+                        <input type="checkbox" className="checkbox" id="forget-pass" />forget Password
+                    </label>
                     <input type="submit" className="submit-btn" value="Log In" />
                 </form>
 
@@ -209,26 +218,24 @@ const Login = () => {
                         <input className="input-field" type="password" onBlur={handleChange} name="Confirm-password" placeholder="Confirm Password" id="confirm-password" required />
                         <span onClick={showPassword} className="show-password"><FontAwesomeIcon id='show-confirm-password-icon' icon={togglePasswordIcon} /></span>
                     </div>
-                    <input type="checkbox" className="checkbox" /><span>I agree to the terms and conditions</span>
+                    <label htmlFor="agree" className="d-flex align-items-center">
+                        <input type="checkbox" className="checkbox" id="agree" />I agree to the terms and conditions
+                    </label>
                     <button type="submit" className="submit-btn">Register</button>
                 </form>
-                <div onClick={() =>history.push('/')} className="back-to-home">
-                    <span>x</span>
+                <div onClick={() => history.push('/')} className="back-to-home">
+                    <span><FontAwesomeIcon id='show-confirm-password-icon' icon={faExpandArrowsAlt} /></span>
                 </div>
-            </div>
 
-                <div className="error-box text-center">
+                <div className="error-box text-center bg-white position-relative">
                     {
                         newUser && fromValidationError &&
                         <p id="fromValidationError">{fromValidationError}</p>
                     }
-
-                    {user.error &&
-                        <p>{user.error}</p>
-                    }
                 </div>
-
             </div>
+
+        </div>
 
     );
 };

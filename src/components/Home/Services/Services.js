@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import './Services.css';
 import { useHistory } from 'react-router';
+import LoadingSpinner from '../../Shared/LoadingSpinner/LoadingSpinner';
 
 const Services = () => {
 
@@ -32,7 +33,7 @@ const Services = () => {
                 <div className="display-grid-col-3">
 
                     {
-                        services.map(service => <div data-aos="fade-up" key={service._id} onClick={() => handleService(service)} className="service-box" >
+                        services.map(service => <div data-aos="fade-up" key={service._id} className="service-box" >
                             <div className="service-image">
                                 <img src={service.image} alt="" />
                             </div>
@@ -41,13 +42,15 @@ const Services = () => {
                                 <h4 className="text-brand">$ {service.cost}</h4>
                                 <p className="text-justif">{service.description}</p>
                                 <div className="book-btn">
-                                    <button className="btn-brand">Book Service</button>
+                                    <button onClick={() => handleService(service)} className="btn-brand">Book Service</button>
                                 </div>
                             </div>
                         </div>)
                     }
-
                 </div>
+                {
+                    services.length === 0 && <LoadingSpinner/>
+                }
             </div>
         </section>
     );

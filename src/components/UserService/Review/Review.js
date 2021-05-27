@@ -1,6 +1,8 @@
 import axios from 'axios';
 import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
+import swal from 'sweetalert';
+
 
 const Review = () => {
     const { register, handleSubmit, errors } = useForm();
@@ -16,17 +18,17 @@ const Review = () => {
                 setImageUrl(response.data.data.display_url);
             })
             .catch(function (error) {
-                alert(error.message);
+                swal('Sorry', error.message, 'error');
             });
     }
 
     const onSubmit = data => {
         if (imageUrl === null) {
-            alert('Please Wait Image Url is processing')
+            swal('Please', 'Wait Image Url is processing', 'warning');
         }
         else {
             const newReview = { ...data, image: imageUrl }
-            fetch('https://diligent-detectives-server.herokuapp.com/postReview', {
+            fetch('https://diligent-detectives-server.herokuapp.com/addTestimonial', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
@@ -36,8 +38,7 @@ const Review = () => {
                 .then(res => res.json())
                 .then(data => {
                     if (data) {
-                        alert('Thanks for your review')
-                        window.location.reload()
+                        swal('Success', 'Thanks for your review', 'success');
                     }
                 })
         }
@@ -51,22 +52,24 @@ const Review = () => {
                 <h1>Review</h1>
                 <p className="text-center text-secondary"><span>Design By</span> <br /> <span> Developer Emon</span></p>
             </div>
-            <div style={{ height: '90vh' }} className="background-light">
+            <div className="background-light">
                 <form className="padding-5 width-50" onSubmit={handleSubmit(onSubmit)}>
                     <div className="form-group">
                         <input placeholder="Your Name" className="input" type="text" name="name" ref={register({ required: true })} />
-                        {errors.name && <span>This field is required</span>}
+                        {errors.name && <span className="text-danger">This field is required</span>}
                     </div>
                     <div className="form-group">
                         <input placeholder="Where are you from?" className="input" type="text" name="from" ref={register({ required: true })} />
-                        {errors.city && <span>This field is required</span>}
+                        {errors.from && <span className="text-danger">This field is required</span>}
                     </div>
                     <div className="form-group">
                         <textarea placeholder="Your comment" className="input" type="text" name="quote" ref={register({ required: true })} />
-                        {errors.comment && <span>This field is required</span>}
+                        {errors.quote && <span className="text-danger">This field is required</span>}
                     </div>
                     <div className="form-group">
-                        <input className="input" type="file" onChange={handleImageUpload} id="upload-photo" required />
+                        <input className="input" type="file" onChange={handleImageUpload} id="upload-photo" name="image" ref={register({ required: true })} />
+                        {errors.image && <span className="text-danger">This field is required</span>}
+
                     </div>
                     <div className="text-right">
                         <input className="btn-brand" type="submit" value="Submit" />

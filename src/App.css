@@ -17,14 +17,14 @@ section{
     border: none;
     outline: none;
     padding: 10px;
-    font-family: "Source Code Pro", monospace;
+    font-family: oswald;
     border-radius: 5px;
     background: white;
     width: 100%;
 }
 
-input::placeholder, textarea::placeholder {
-    color: #aab7c4;
+.input::placeholder, textarea::placeholder {
+    color: #8e97a1;
 }
 
 .display-grid-col-3 {
@@ -156,6 +156,8 @@ input::placeholder, textarea::placeholder {
 .background-light {
     background-color: #d3d3d36e;
     width: 100%;
+    height: 90vh;
+    overflow-y: scroll;
 }
 
 .section-title {
@@ -169,7 +171,7 @@ input::placeholder, textarea::placeholder {
 	font-weight: 600;
 	margin-bottom: 15px;
 	position: relative;
-    padding: 15px;
+    padding-bottom: 15px;
     text-transform: uppercase;
 }
 

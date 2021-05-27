@@ -7,6 +7,7 @@ import { faComments, faEnvelope } from '@fortawesome/free-regular-svg-icons';
 import { Link } from 'react-router-dom';
 
 const Footer = () => {
+
     return (
         <footer id="footer">
 
@@ -14,54 +15,58 @@ const Footer = () => {
 
                 <div className="row">
 
-                    <div className="footer-box col-md-3">
+                    <div className="footer-box col-md-3 col-sm-6">
 
                         <h3>ABOUT US</h3>
                         <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Harum, odit repudiandae? Unde doloremque nemo aperiam cupiditate nam laudantium voluptatem beatae!</p>
 
                         <div className="ficons">
-
                             <a href="/"><FontAwesomeIcon icon={faFacebookF} /></a>
                             <a href="/"><FontAwesomeIcon icon={faTwitter} /></a>
                             <a href="/"><FontAwesomeIcon icon={faLinkedinIn} /></a>
                             <a href="/"><FontAwesomeIcon icon={faInstagram} /></a>
                             <a href="/"><FontAwesomeIcon icon={faBehance} /></a>
-
                         </div>
 
                     </div>
 
-                    <div className="footer-box col-md-3">
+                    <div className="footer-box col-md-3 col-sm-6">
 
                         <h3>CONTACT US</h3>
 
-                        <div className="contact-icon"><FontAwesomeIcon icon={faHome} /></div>
-                        <span id="contacts"> Mohammadpur, Dhaka-1207, Bangladesh</span>
+                        <div className="contact-icon d-flex align-items-center mb-4">
+                            <FontAwesomeIcon icon={faHome} />
+                            <span> Mohammadpur, Dhaka-1207, Bangladesh</span>
+                        </div>
 
-                        <div className="contact-icon"><FontAwesomeIcon icon={faPhone} /></div>
-                        <span id="contacts"> +880 19982 00160 <br /> +880 18712 57744</span>
+                        <div className="contact-icon d-flex align-items-center mb-4">
+                            <FontAwesomeIcon icon={faPhone} />
+                            <span> +880 19982 00160 <br /> +880 18712 57744</span>
+                        </div>
 
-                        <div className="contact-icon"><FontAwesomeIcon icon={faEnvelope} /></div>
-                        <span id="contacts"> emonhossain0317@gmail.com <br /> emon.dev02@gmail.com</span>
+                        <div className="contact-icon d-flex align-items-center mb-4">
+                            <FontAwesomeIcon icon={faEnvelope} />
+                            <span> emonhossain0317@gmail.com <br /> emon.dev02@gmail.com</span>
+                        </div>
 
                     </div>
 
-                    <div className="footer-box col-md-3">
+                    <div className="footer-box col-md-3 col-sm-6">
 
-                        <h3>USEFULL LINKS</h3>
+                        <h3>USEFUL LINKS</h3>
 
                         <ul>
-                            <li><a href="/"><FontAwesomeIcon icon={faChevronRight} />Home</a></li>
-                            <li><a href="/"><FontAwesomeIcon icon={faChevronRight} />About Us</a></li>
-                            <li><a href="/"><FontAwesomeIcon icon={faChevronRight} />Services</a></li>
-                            <li><a href="/"><FontAwesomeIcon icon={faChevronRight} />News</a></li>
-                            <li><a href="/"><FontAwesomeIcon icon={faChevronRight} />Portfolio</a></li>
+                            <li><Link href="/"><FontAwesomeIcon icon={faChevronRight} />Home</Link></li>
+                            <li><Link href="/"><FontAwesomeIcon icon={faChevronRight} />About Us</Link></li>
+                            <li><Link href="/"><FontAwesomeIcon icon={faChevronRight} />Services</Link></li>
+                            <li><Link href="/"><FontAwesomeIcon icon={faChevronRight} />News</Link></li>
+                            <li><Link href="/"><FontAwesomeIcon icon={faChevronRight} />other</Link></li>
                         </ul>
 
                     </div>
 
-                    <div className="footer-box col-md-3">
-                        <h3>Recent Cases</h3>
+                    <div className="footer-box col-md-3 col-sm-6">
+                        <h3>RECENT CASES</h3>
                         <div className="fRpost">
 
                             <div className="fRpostMeta">
@@ -98,16 +103,17 @@ const Footer = () => {
 
                 <div className="copy-right-container">
                     <div className="row">
-
-                        <p className="col-md-6">Copyright &copy; {new Date().getFullYear()}, All rights reserved Emon</p>
-
-                        <div className="col-md-6 text-right">
-                            <ul className="list-unstyled">
-                                <li><Link to="/">FAQS </Link></li>
+                        <div className="col-md-6 order-md-6">
+                            <ul className="list-unstyled ml-auto">
+                                <li className="mr-4"><Link to="/">FAQS </Link></li>
                                 <li className="mr-4"><Link to="/">Privacy </Link></li>
                                 <li className="mr-4"><Link to="/">Policy </Link></li>
                                 <li className="mr-4"><Link to="/">Support</Link></li>
                             </ul>
+                        </div>
+
+                        <div className="col-md-6">
+                            <p>Copyright &copy; {new Date().getFullYear()}, All rights reserved Emon</p>
                         </div>
                     </div>
                 </div>

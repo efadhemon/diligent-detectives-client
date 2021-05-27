@@ -1,15 +1,25 @@
 import React, { useEffect, useState } from 'react';
-import './BookingList.css'
+import './BookingList.css';
+import swal from 'sweetalert';
+import LoadingSpinner from '../../Shared/LoadingSpinner/LoadingSpinner';
+
 
 const BookingList = () => {
     const clientInfo = JSON.parse(localStorage.getItem('loggedInUser')) || {}
 
-    const [services, setServices] = useState([]);
+    const [booking, setBooking] = useState(null);
 
     useEffect(() => {
         fetch(`https://diligent-detectives-server.herokuapp.com/bookings?email=${clientInfo.email}`)
             .then(res => res.json())
-            .then(data => setServices(data))
+            .then(data => {
+                setBooking(data);
+            })
+            .catch(err => {
+                swal('Sorry', err.message, 'error');
+                setBooking(true);
+                document.getElementById('booking-list-container').innerHTML = `<h2 class="text-center text-danger m-5">Sorry Something Is Wrong</h2>`;
+            })
     }, [clientInfo.email])
 
     return (
@@ -18,28 +28,36 @@ const BookingList = () => {
                 <h1>Booking List</h1>
                 <p className="text-center text-secondary"><span>Design By</span> <br /> <span> Developer Emon</span></p>
             </div>
-            <div style={{height: '90vh', overflow: 'scroll'}} className="background-light padding-5">
+            <div id="booking-list-container" className="background-light padding-5">
 
-                <div className="display-grid-col-3">
-                    {
-                        services.map(service => <div key={service._id} className="p-3 box-shadow rounded bg-white">
-                            <div className="d-flex justify-content-between align-items-center mb-4">
-                                <img className="rounded-circle" src={service.serviceInfo.image} alt="" width="80" height="80" />
-                                <p className={`status ${service.status}`}>{service.status}</p>
-                            </div>
-                            <div className="d-flex justify-content-between">
-                                <h5>{service.serviceInfo.name}</h5>
-                                <p>$ {service.serviceInfo.cost}</p>
-                            </div>
-                            <p className="text-justify">{service.serviceInfo.description}</p>
-                        </div>)
-                    }
-                </div>
+                {
+                    booking?.length > 0 &&
+                    <div className="display-grid-col-3">
+                        {
+                            booking.map(service => <div key={service._id} className="p-3 box-shadow rounded bg-white">
+                                <div className="d-flex justify-content-between align-items-center mb-4">
+                                    <img className="rounded-circle" src={service.serviceInfo.image} alt="" width="80" height="80" />
+                                    <p className={`status ${service.status}`}>{service.status}</p>
+                                </div>
+                                <div className="d-flex justify-content-between">
+                                    <h5>{service.serviceInfo.name}</h5>
+                                    <p>$ {service.serviceInfo.cost}</p>
+                                </div>
+                                <p className="text-justify">{service.serviceInfo.description}</p>
+                            </div>)
+                        }
+                    </div>
+                }
+
+                {
+                    !booking && <LoadingSpinner/>
+                }
+
+                {
+                    booking?.length === 0 && <h2 className="text-center m-5">You have no booking</h2>
+                }
+
             </div>
-
-            {
-                services.length === 0 && <h2 className="text-center m-5">You have No Booking</h2>
-            }
         </div>
     );
 };

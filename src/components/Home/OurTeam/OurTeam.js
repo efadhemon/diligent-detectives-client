@@ -42,7 +42,7 @@ const OurTeam = () => {
     ];
 
     return (
-        <section id="our-team" className="py-5 overflow-hidden">
+        <section id="our-team" className="overflow-hidden">
             <div className="container">
 
                 <div className="section-title">

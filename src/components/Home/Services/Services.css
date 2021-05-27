@@ -41,14 +41,15 @@
 .service-details .book-btn {
     position: absolute;
     bottom: -100px;
-    width: 100%;
-    margin: auto;
+    left: 0;
+    right: 0;
     transition: 0.3s;
 }
 
 .service-box:hover .book-btn {
-    position: initial;
-    bottom: 0;
-    width: 100%;
-    margin: auto;
+    bottom: -20px;
+}
+
+.service-box:hover .service-details {
+    overflow: visible;
 }

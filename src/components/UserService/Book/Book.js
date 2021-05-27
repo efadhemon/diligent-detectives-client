@@ -3,6 +3,7 @@ import './Book.css'
 import { useHistory } from 'react-router';
 import { Link } from 'react-router-dom';
 import ProcessPayment from '../ProcessPayment/ProcessPayment';
+import swal from 'sweetalert';
 
 const Book = () => {
 
@@ -24,7 +25,7 @@ const Book = () => {
       .then(res => res.json())
       .then(data => {
         if (data) {
-          alert('Thanks, Your Booking is Successful');
+          swal('Thanks', 'Your Booking is Successful', 'success')
           sessionStorage.removeItem('service');
           history.push('/user/booking-list')
         }
@@ -37,7 +38,7 @@ const Book = () => {
         <h1>Book</h1>
         <p className="text-center text-secondary"><span>Design By</span> <br /> <span> Developer Emon</span></p>
       </div>
-      <div style={{height: '90vh'}} className="background-light padding-5">
+      <div  className="background-light padding-5">
         <div style={{ display: serviceInfo.status === null ? 'none' : 'block' }}>
 
           <div className="booking-info width-50">

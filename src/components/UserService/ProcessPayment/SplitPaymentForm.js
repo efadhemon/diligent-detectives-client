@@ -1,4 +1,4 @@
-import React, { useMemo, useState } from "react";
+import React, { useMemo } from "react";
 import {
   useElements,
   CardNumberElement,
@@ -6,8 +6,8 @@ import {
   CardExpiryElement,
   useStripe
 } from "@stripe/react-stripe-js";
-
 import useResponsiveFontSize from "./useResponsiveFontSize";
+import swal from 'sweetalert';
 
 const useOptions = () => {
   const fontSize = useResponsiveFontSize();
@@ -41,9 +41,6 @@ const SplitPaymentForm = ({ serviceCost, handlePayment }) => {
   const options = useOptions();
 
 
-  const [paymentError, setPaymentError] = useState(null);
-  const [paymentSuccess, setPaymentSuccess] = useState(null);
-
   const handleSubmit = async event => {
     event.preventDefault();
 
@@ -53,11 +50,8 @@ const SplitPaymentForm = ({ serviceCost, handlePayment }) => {
     });
 
     if (error) {
-      setPaymentError(error.message)
-      setPaymentSuccess(null);
+      swal('Field', error.message, 'error')
     } else {
-      setPaymentSuccess(paymentMethod.id);
-      setPaymentError(null)
       handlePayment(paymentMethod.id)
     }
   };
@@ -90,13 +84,6 @@ const SplitPaymentForm = ({ serviceCost, handlePayment }) => {
         <button className="btn-brand pay-btn" type="submit">Pay</button>
         </div>
       </form>
-
-      {
-        paymentError && <p style={{ color: 'red' }}>{paymentError}</p>
-      }
-      {
-        paymentSuccess && <p style={{ color: 'green' }}>Thank you, Your Payment is Success.</p>
-      }
     </div>
   );
 };

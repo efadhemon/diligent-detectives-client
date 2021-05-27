@@ -1,8 +1,9 @@
 import React from 'react';
+import './Contact.css';
 
 const Contact = () => {
     return (
-        <section id="contact" className="contact py-5">
+        <section id="contact" className="contact">
             <div className="container">
 
                 <div className="section-title">
