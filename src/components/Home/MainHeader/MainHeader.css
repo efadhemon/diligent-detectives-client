@@ -5,6 +5,22 @@
     background-position: bottom;
 }
 
+.back-to-top{
+    position: fixed;
+    right: 20px;
+    bottom: 20px;
+    background-color: #2e2d2d;
+    color: #ffffff;
+    border: none;
+    outline: none;
+    height: 40px;
+    width: 40px;
+    font-size: 18px;
+    border-radius: 100%;
+    display: none;
+    z-index: 85448;
+}
+
 @media (min-width: 991px) {
     .main-header{
         height: 100vh;

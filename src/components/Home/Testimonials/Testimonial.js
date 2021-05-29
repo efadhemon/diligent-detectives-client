@@ -7,7 +7,7 @@ const Testimonial = (props) => {
             <div className="d-flex  align-items-center">
                 <img className="rounded-circle shadow" src={image} alt="" width="100" height="100"/>
                 <div className="ml-4">
-                    <h4 className="text-brand">{name}</h4>
+                    <h4 className="text-gradient">{name}</h4>
                     <h6 className="m-0">{from}</h6>
                 </div>
             </div>

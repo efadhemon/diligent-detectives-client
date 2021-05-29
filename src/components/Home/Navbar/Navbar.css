@@ -5,12 +5,12 @@
 
 .header .navbar{
     z-index: 3500;
+    transition: 0.3s;
 }
 
 .header .navbar .brand-logo{
     font-size: 40px;
     font-weight: 700;
-    color: black !important;
 }
 
 .header .nav-item .nav-link{
@@ -54,6 +54,20 @@
     border-radius: 50%;
     width: 100px;
     margin-bottom: 10px;
+}
+
+.logout-btn{
+    border: 1px solid #6c5ce7;
+    padding: 5px 20px;
+    background: #ffffff;
+    color: #6c5ce7;
+    font-weight: 500;
+    border-radius: 10px;
+    transition: 0.3s;
+}
+.logout-btn:hover{
+    background: #6c5ce7;
+    color: #ffffff;
 }
 
 /* Responsive css */
