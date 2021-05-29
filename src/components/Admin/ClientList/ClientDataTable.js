@@ -27,7 +27,7 @@ const ClientDataTable = ({ client, index }) => {
             <td>{client.serviceInfo.name}</td>
             <td>{client.paymentId}</td>
             <td>
-                <select id={client._id} onChange={updateStatus}>
+                <select id={client._id} onChange={updateStatus} className={`service-status ${client.status}`}>
                     <option value={client.status}>{client.status}</option>
                     {client.status !== 'Pending' &&
                         <option value="Pending">Pending</option>

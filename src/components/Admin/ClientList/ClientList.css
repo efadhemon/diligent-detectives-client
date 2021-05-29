@@ -1,0 +1,22 @@
+.service-status{
+    font-size: 18px;
+    font-weight:500;
+    padding: 5px;
+    border: none;
+    outline: none;
+    cursor: pointer;
+}
+.service-status.Pending{
+    background-color: #fd7373;
+    color: #ffffff;
+}
+.service-status.Done{
+    background-color: #02fa72;
+    color: #ffffff;
+}
+
+.service-status.On.going{
+    background-color: orange;
+    color: #ffffff;
+    
+}

@@ -1,32 +1,74 @@
-import { faTrashAlt } from '@fortawesome/free-regular-svg-icons';
+import { faEdit, faTrashAlt } from '@fortawesome/free-regular-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React, { useEffect, useState } from 'react';
+import swal from 'sweetalert';
+import EditServiceModal from './EditServiceModal';
+
 
 const ManageService = () => {
-    const [services, setServices] = useState([])
+    const [services, setServices] = useState([]);
+    const [editedService, setEditedService] = useState({});
+    const [editedSuccess, setEditedSuccess] = useState(null);
+
+    const [modalIsOpen, setIsOpen] = useState(false);
+    function openModal() {
+        setIsOpen(true);
+    }
+
+    function closeModal() {
+        setIsOpen(false);
+    }
+
 
     useEffect(() => {
         fetch('https://diligent-detectives-server.herokuapp.com/service')
             .then(res => res.json())
             .then(data => setServices(data))
-    }, [])
+    }, [editedSuccess])
 
     const handleDeleteService = (id) => {
-        // eslint-disable-next-line no-restricted-globals
-        const deleteConfirm = confirm('Are you sure to delete this product')
-        if (deleteConfirm) {
-            fetch(`https://diligent-detectives-server.herokuapp.com/deleteService/${id}`, {
-                method: 'DELETE'
-            })
-                .then(res => res.json())
-                .then(result => {
-                    if (result) {
-                        document.getElementById(`${id}`).style.display = 'none';
-                    }
-                })
-        }
+        swal({
+            title: "Are you sure?",
+            text: "Once deleted, you will not be able to recover this!",
+            icon: "warning",
+            buttons: true,
+            dangerMode: true,
+        })
+            .then((willDelete) => {
+                if (willDelete) {
+                    fetch(`https://diligent-detectives-server.herokuapp.com/deleteService/${id}`, {
+                        method: 'DELETE'
+                    })
+                        .then(res => res.json())
+                        .then(result => {
+                            if (result) {
+                                swal("Poof! Service has been deleted!", {
+                                    icon: "success",
+                                });
+                                document.getElementById(`${id}`).style.display = 'none';
+                            }
+                        })
+                }
+            });
 
-    }
+    };
+    
+    const handleEditService = (service) => {
+        swal({
+            title: "Are you sure?",
+            text: "To Edit This Service!",
+            icon: "warning",
+            buttons: true,
+            dangerMode: true,
+        })
+            .then((willEdit) => {
+                if (willEdit) {
+                    setEditedService(service)
+                    openModal()
+                }
+            });
+
+    };
 
     return (
         <div className="manage-service">
@@ -34,7 +76,7 @@ const ManageService = () => {
                 <h1>Manage Service</h1>
                 <p className="text-center text-secondary"><span>Design By</span> <br /> <span> Developer Emon</span></p>
             </div>
-            <div   className="background-light padding-5">
+            <div className="background-light padding-5">
                 <div className="bg-white p-3 border-radius-10">
                     <table className="table table-borderless text-center">
                         <thead className="background-light">
@@ -52,8 +94,9 @@ const ManageService = () => {
                                         <td>{index + 1}</td>
                                         <td>{service.name}</td>
                                         <td>{service.cost}</td>
-                                        <td >
-                                            <span onClick={()=> handleDeleteService(service._id)}><FontAwesomeIcon icon={faTrashAlt}/></span>
+                                        <td>
+                                            <span className="delete-btn mr-3" onClick={() => handleDeleteService(service._id)}><FontAwesomeIcon icon={faTrashAlt} /></span>
+                                            <span className="edit-btn" onClick={ () => handleEditService(service)}><FontAwesomeIcon icon={faEdit} /></span>
                                         </td>
                                     </tr>
                                 )
@@ -61,6 +104,7 @@ const ManageService = () => {
                         </tbody>
                     </table>
                 </div>
+                <EditServiceModal modalIsOpen={modalIsOpen} closeModal={closeModal} setEditedSuccess={setEditedSuccess} service={editedService}></EditServiceModal>
             </div>
         </div>
     );

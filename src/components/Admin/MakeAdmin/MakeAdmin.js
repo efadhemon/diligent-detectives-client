@@ -16,7 +16,7 @@ const MakeAdmin = () => {
             .then(admin => {
                 if (admin) {
                     alert('Admin Successfully Added')
-                    window.location.reload();
+             window.location.reload();
                 }
             })
     };

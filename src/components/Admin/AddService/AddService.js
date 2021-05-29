@@ -37,7 +37,7 @@ const AddService = () => {
                 .then(data => {
                     if (data) {
                         alert('Service Successfully Added')
-                        window.location.reload()
+                 window.location.reload()
                     }
                 })
         }

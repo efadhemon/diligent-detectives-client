@@ -12,6 +12,9 @@
     text-decoration: none;
 }
 
+.sidebar li a {
+    font-size: 18px;
+}
 .sidebar li span {
     transition: 0.3s;
 }

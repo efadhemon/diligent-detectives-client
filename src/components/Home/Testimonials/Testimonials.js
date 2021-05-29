@@ -23,15 +23,17 @@ const Testimonials = () => {
                     <h1 className="col-md-7 text-gradient">-- What Our Clients Say</h1>
                     <p className="col-md-5">Lorem ipsum dolor sit amet consectetur adipisicing elit. Et nam quidem quos provident. Impedit praesentium cumque soluta iusto atque officiis.</p>
                 </div>
-            </div>
-            <div className="display-grid-col-3">
+                <div className="display-grid-col-3">
+                    {
+                        testimonials.map(testimonial => <Testimonial key={testimonial._id} testimonial={testimonial} />)
+                    }
+                </div>
+
                 {
-                    testimonials.map(testimonial =><Testimonial key={testimonial._id} testimonial={testimonial} />)
+                    testimonials.length === 0 && <LoadingSpinner />
                 }
+
             </div>
-            {
-                testimonials.length === 0 && <LoadingSpinner />
-            }
         </section>
     );
 };

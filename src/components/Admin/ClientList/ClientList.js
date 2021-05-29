@@ -1,8 +1,10 @@
 import React, { useEffect, useState } from 'react';
+import './ClientList.css';
 import ClientDataTable from './ClientDataTable';
+import LoadingSpinner from '../../Shared/LoadingSpinner/LoadingSpinner';
 
 const ClientList = () => {
-    const [clients, setClients] = useState([])
+    const [clients, setClients] = useState(null)
 
     useEffect(() => {
         fetch(`https://diligent-detectives-server.herokuapp.com/clients`)
@@ -31,10 +33,17 @@ const ClientList = () => {
                         </thead>
                         <tbody>
                             {
-                                clients.map((client, index) => <ClientDataTable client={client} index={index} key={client._id}></ClientDataTable>)
+                                clients?.map((client, index) => <ClientDataTable client={client} index={index} key={client._id}></ClientDataTable>)
                             }
                         </tbody>
                     </table>
+                    {
+                        !clients && <LoadingSpinner />
+                    }
+
+                    {
+                        clients?.length === 0 && <h2>No Client Here</h2>
+                    }
                 </div>
             </div>
         </div>
