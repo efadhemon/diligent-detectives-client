@@ -2,7 +2,7 @@ import React from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import './Sidebar.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faSignOutAlt, faCartPlus, faBook, faCommentAlt, faPlus, faUser, faThLarge } from '@fortawesome/free-solid-svg-icons';
+import { faSignOutAlt, faCartPlus, faBook, faCommentAlt, faPlus, faUser, faThLarge, faUserAlt } from '@fortawesome/free-solid-svg-icons';
 
 const Sidebar = () => {
 
@@ -25,6 +25,11 @@ const Sidebar = () => {
                 </li>
                 {mainPath === 'user' &&
                     <>
+                        <li>
+                            <Link to="/user/profile" className="text-white side-bar-link">
+                                <FontAwesomeIcon icon={faUserAlt} /> <span>Profile</span>
+                            </Link>
+                        </li>
                         <li>
                             <Link to="/user/book" className="text-white side-bar-link">
                                 <FontAwesomeIcon icon={faCartPlus} /> <span>Book</span>

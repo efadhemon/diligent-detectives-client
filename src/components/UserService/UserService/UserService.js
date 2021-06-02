@@ -7,6 +7,7 @@ import {
 import Book from '../Book/Book';
 import BookingList from '../BookingList/BookingList';
 import Review from '../Review/Review';
+import Profile from '../Profile/Profile';
 const UserService = () => {
     return (
         <div className="row margin-0">
@@ -15,6 +16,9 @@ const UserService = () => {
             </div>
             <div className="col-md-10 padding-0">
                 <Switch>
+                    <Route path="/user/profile">
+                        <Profile></Profile>
+                    </Route>
                     <Route path="/user/book">
                         <Book></Book>
                     </Route>
