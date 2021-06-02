@@ -1,39 +1,59 @@
 
 .verify-admin-box{
-    width: 60%;
-    height: 400px;
+    width: 40%;
     display: flex;
     align-items: center;
     justify-content: center;
     margin: auto;
-    text-align: center;
     box-shadow: 0px 0px 20px 0px lightgrey;
     margin-top: 100px;
     padding: 50px;
     border-radius: 10px;
     position: relative;
 }
-input.verify-admin {
-    border: none;
-    outline: none;
-    padding: 15px;
+
+.test-admin-details{
+    position: fixed;
+    right: 100px;
+    text-align: center;
+    background-color: #fff;
+    width: 300px;
+    padding: 20px;
+    border-radius: 5px;
     box-shadow: 0px 0px 20px 0px lightgrey;
-    border-radius: 50px;
-    width: 500px;
 }
 
-input.verify-btn {
-    padding: 15px 40px !important;
-    font-weight: 500;
-    position: relative;
-    margin-left: -100px;
-    border-radius: 50px;
+.test-admin-details .cancel-details{
+    position: absolute;
+    top: 0;
+    right: 10px;
+	color: black;
+    cursor: pointer;
 }
 
 
+@media (max-width: 991px) {
+    .verify-admin-box{
+        width: 90%;
+        padding: 10px;
+    }
 
-@media (max-width: 575px) {
     input.verify-admin {
         width: 90%;
+    }
+}
+
+@media (max-width: 575px) {
+    .verify-admin-box{
+        width: 95%;
+        padding: 5px;
+    }
+
+    input.verify-admin {
+        width: 90%;
+    }
+    input.verify-btn {
+        position: initial;
+        margin-top: 20px;
     }
 }

@@ -39,7 +39,6 @@ const Review = () => {
                 .then(data => {
                     if (data) {
                         swal('Success', 'Thanks for your review', 'success');
-                        window.location.reload()
                     }
                 })
         }

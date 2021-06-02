@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import './MainHeader.css'
 import Navbar from '../Navbar/Navbar';
 import TopBanner from '../TopBanner/TopBanner';
@@ -7,12 +7,14 @@ import { faArrowUp } from '@fortawesome/free-solid-svg-icons';
 
 const MainHeader = () => {
 
+    const [isVisible, setIsVisible] = useState(false);
+
     useEffect(() => {
         window.addEventListener("scroll", () => {
             if (window.scrollY > 50) {
-                document.querySelector('.back-to-top').style.display = 'block';
+                setIsVisible(true);
             } else {
-                document.querySelector('.back-to-top').style.display = 'none';
+                setIsVisible(false);
             }
         })
     }, []);
@@ -25,7 +27,7 @@ const MainHeader = () => {
         <section className="main-header">
             <Navbar></Navbar>
             <TopBanner></TopBanner>
-            <button className="back-to-top" onClick={handleBackToTop}title="Back To Top"><FontAwesomeIcon icon={faArrowUp} /></button>
+            <button className={isVisible ? "back-to-top" : "back-to-top d-none"} onClick={handleBackToTop}title="Back To Top"><FontAwesomeIcon icon={faArrowUp} /></button>
         </section>
     );
 };

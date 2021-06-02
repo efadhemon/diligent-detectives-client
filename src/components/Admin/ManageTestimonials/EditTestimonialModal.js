@@ -68,8 +68,8 @@ const EditTestimonialModal = ({ modalIsOpen, closeModal, setEditedSuccess, edite
                     </div>
 
                     <div className="form-group d-flex justify-content-between">
-                        <button onClick={() => closeModal()} type="reset" className="btn btn-primary">Cancel</button>
-                        <input className="btn-brand" type="submit" value="Update" />
+                        <button onClick={() => closeModal()} type="reset" className="btn btn-danger">Cancel</button>
+                        <input className="btn btn-success" type="submit" value="Update" />
                     </div>
 
                 </form>

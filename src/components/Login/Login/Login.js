@@ -4,10 +4,11 @@ import { useState } from 'react';
 import { useHistory, useLocation } from 'react-router';
 import { createUserWithEmailAndPassword, handleFbSingIn, handleGoogleSignIn, initializeLoginFramework, signInWithEmailAndPassword } from './LoginManager';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faEyeSlash, faEye, faExpandArrowsAlt } from '@fortawesome/free-solid-svg-icons';
+import { faEyeSlash, faEye, faTimes } from '@fortawesome/free-solid-svg-icons';
 import facebook from '../../../images/facebook.png';
 import google from '../../../images/google.png';
 import swal from 'sweetalert';
+import { Toaster } from 'react-hot-toast';
 
 
 
@@ -101,6 +102,10 @@ const Login = () => {
                     .then(res => {
                         handleResponse(res, true);
                         setFromValidationError('');
+                        <Toaster
+                            position="top-center"
+                            reverseOrder={false}
+                        />
                     })
             }
         }
@@ -224,7 +229,7 @@ const Login = () => {
                     <button type="submit" className="submit-btn">Register</button>
                 </form>
                 <div onClick={() => history.push('/')} className="back-to-home">
-                    <span><FontAwesomeIcon id='show-confirm-password-icon' icon={faExpandArrowsAlt} /></span>
+                    <span><FontAwesomeIcon id='show-confirm-password-icon' icon={faTimes} /></span>
                 </div>
 
                 <div className="error-box text-center bg-white position-relative">
