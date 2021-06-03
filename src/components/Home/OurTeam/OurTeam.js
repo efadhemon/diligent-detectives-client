@@ -30,7 +30,7 @@ const OurTeam = () => {
             title: 'Project Manager',
             image: Member3,
             socials: [{ link: '#', icon: faFacebookF }, { link: '#', icon: faTwitter }, { link: '#', icon: faInstagram }, { link: '#', icon: faLinkedinIn }],
-            animation: 'fade-down'
+            animation: 'fade-up'
         }, {
             id: 4,
             name: 'JONH WELSON',

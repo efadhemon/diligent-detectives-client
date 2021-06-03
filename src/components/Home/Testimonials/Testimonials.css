@@ -2,3 +2,24 @@
     padding: 80px 0;
     background-color: aliceblue;
 }
+
+.single-testimonial {
+    background-color: #ffffff;
+    text-align: center;
+    padding: 30px;
+    margin: 0 20px 50px;
+    border-radius: 10px;
+}
+
+.swiper-pagination-bullet{
+    height: 10px !important;
+    width: 10px !important;
+    opacity: 1 !important;
+    background: transparent !important;
+    border: 2px solid #6c5ce7 !important;
+}
+
+.swiper-pagination-bullet-active {
+    opacity: 1;
+    background: #6c5ce7 !important;
+}

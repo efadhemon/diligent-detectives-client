@@ -2,13 +2,14 @@ import { faEdit, faTrashAlt } from '@fortawesome/free-regular-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React, { useEffect, useState } from 'react';
 import swal from 'sweetalert';
+import LoadingSpinner from '../../Shared/LoadingSpinner/LoadingSpinner';
 import EditServiceModal from './EditServiceModal';
 
 
 const ManageService = () => {
-    const [services, setServices] = useState([]);
+    const [services, setServices] = useState(null);
     const [editedService, setEditedService] = useState({});
-    const [editedSuccess, setEditedSuccess] = useState(null);
+    const [isEditedSuccess, setIsEditedSuccess] = useState(false);
 
     const [modalIsOpen, setIsOpen] = useState(false);
     function openModal() {
@@ -24,7 +25,7 @@ const ManageService = () => {
         fetch('https://diligent-detectives-server.herokuapp.com/service')
             .then(res => res.json())
             .then(data => setServices(data))
-    }, [editedSuccess])
+    }, [isEditedSuccess])
 
     const handleDeleteService = (id) => {
         swal({
@@ -89,7 +90,7 @@ const ManageService = () => {
                         </thead>
                         <tbody>
                             {
-                                services.map((service, index) =>
+                                services?.map((service, index) =>
                                     <tr key={service._id} id={`${service._id}`}>
                                         <td>{index + 1}</td>
                                         <td>{service.name}</td>
@@ -103,8 +104,15 @@ const ManageService = () => {
                             }
                         </tbody>
                     </table>
+                    {
+                        !services && <LoadingSpinner />
+                    }
+
+                    {
+                        services?.length === 0 && <h2>No Service Here</h2>
+                    }
                 </div>
-                <EditServiceModal modalIsOpen={modalIsOpen} closeModal={closeModal} setEditedSuccess={setEditedSuccess} service={editedService}></EditServiceModal>
+                <EditServiceModal modalIsOpen={modalIsOpen} closeModal={closeModal} isEditedSuccess={isEditedSuccess} setIsEditedSuccess={setIsEditedSuccess} service={editedService}></EditServiceModal>
             </div>
         </div>
     );

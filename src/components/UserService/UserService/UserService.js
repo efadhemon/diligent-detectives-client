@@ -16,7 +16,7 @@ const UserService = () => {
             </div>
             <div className="col-md-10 padding-0">
                 <Switch>
-                    <Route path="/user/profile">
+                    <Route exact path="/user">
                         <Profile></Profile>
                     </Route>
                     <Route path="/user/book">

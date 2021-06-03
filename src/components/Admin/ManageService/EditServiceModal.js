@@ -17,7 +17,7 @@ const customStyles = {
 
 Modal.setAppElement('#root')
 
-const EditServiceModal = ({ modalIsOpen, closeModal, setEditedSuccess, service: { _id, name, cost, description } }) => {
+const EditServiceModal = ({ modalIsOpen, closeModal, isEditedSuccess,  setIsEditedSuccess, service: { _id, name, cost, description } }) => {
 
     const { register, handleSubmit } = useForm();
     const onSubmit = data => {
@@ -33,7 +33,11 @@ const EditServiceModal = ({ modalIsOpen, closeModal, setEditedSuccess, service: 
                         icon: "success",
                     });
                     closeModal()
-                    setEditedSuccess(true)
+                    if (isEditedSuccess) {
+                        setIsEditedSuccess(false)
+                    }else{
+                        setIsEditedSuccess(true)
+                    }
                 }else{
                     swal("Error",  "Something is wrong", 'error');
                 }

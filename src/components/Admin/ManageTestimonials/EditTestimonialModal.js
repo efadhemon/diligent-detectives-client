@@ -17,7 +17,7 @@ const customStyles = {
 
 Modal.setAppElement('#root')
 
-const EditTestimonialModal = ({ modalIsOpen, closeModal, setEditedSuccess, editedTestimonial: { _id, name, from, quote } }) => {
+const EditTestimonialModal = ({ modalIsOpen, closeModal, isEditedSuccess, setIsEditedSuccess, editedTestimonial: { _id, name, from, quote } }) => {
 
     const { register, handleSubmit } = useForm();
     const onSubmit = data => {
@@ -29,11 +29,15 @@ const EditTestimonialModal = ({ modalIsOpen, closeModal, setEditedSuccess, edite
             .then(res => res.json())
             .then(result => {
                 if (result) {
-                    swal("Poof! Service has been updated!", {
+                    swal("Success", "Service has been updated!", {
                         icon: "success",
                     });
                     closeModal()
-                    setEditedSuccess(true)
+                    if (isEditedSuccess) {
+                        setIsEditedSuccess(false)
+                    }else{
+                        setIsEditedSuccess(true)
+                    }
                 }else{
                     swal("Error",  "Something is wrong", 'error');
                 }

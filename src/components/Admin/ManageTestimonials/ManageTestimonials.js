@@ -10,7 +10,7 @@ import EditTestimonialModal from './EditTestimonialModal';
 const ManageTestimonials = () => {
     const [testimonials, setTestimonials] = useState([]);
     const [editedTestimonial, setEditedTestimonial] = useState({});
-    const [editedSuccess, setEditedSuccess] = useState(null);
+    const [isEditedSuccess, setIsEditedSuccess] = useState(null);
 
     const [modalIsOpen, setIsOpen] = useState(false);
     function openModal() {
@@ -30,7 +30,7 @@ const ManageTestimonials = () => {
             .catch(err => {
                 swal('Sorry', err.message, 'error');
             })
-    }, [editedSuccess])
+    }, [isEditedSuccess])
 
     const handleDeleteTestimonial = (id) => {
         swal({
@@ -93,7 +93,7 @@ const ManageTestimonials = () => {
 
                                 <img className="rounded-circle" src={testimonial.image} alt="" width="100" height="100" />
                                 <h4>{testimonial.name}</h4>
-                                <h5>{testimonial.from}</h5>
+                                <h6>{testimonial.from}</h6>
                                 <p>{testimonial.quote}</p>
                                 <div className="d-flex justify-content-between align-items-center mt-3">
                                     <button className="delete-btn" onClick={() => handleDeleteTestimonial(testimonial._id)}><FontAwesomeIcon icon={faTrashAlt} /> Delete</button>
@@ -108,7 +108,7 @@ const ManageTestimonials = () => {
                     testimonials.length === 0 && <LoadingSpinner />
                 }
 
-                <EditTestimonialModal modalIsOpen={modalIsOpen} closeModal={closeModal} setEditedSuccess={setEditedSuccess} editedTestimonial={editedTestimonial}></EditTestimonialModal>
+                <EditTestimonialModal modalIsOpen={modalIsOpen} closeModal={closeModal} isEditedSuccess={isEditedSuccess} setIsEditedSuccess={setIsEditedSuccess} editedTestimonial={editedTestimonial}></EditTestimonialModal>
 
             </div>
         </div>

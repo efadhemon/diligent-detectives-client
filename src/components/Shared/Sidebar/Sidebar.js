@@ -20,28 +20,28 @@ const Sidebar = () => {
             <ul className="list-unstyled">
                 <li>
                     <Link to="/" className="side-bar-link">
-                        <h2 className="text-white"> {'{D}'} Detectives</h2>
+                        <h2> {'{D}'} Detectives</h2>
                     </Link>
                 </li>
                 {mainPath === 'user' &&
                     <>
                         <li>
-                            <Link to="/user/profile" className="text-white side-bar-link">
+                            <Link to="/user" className="side-bar-link">
                                 <FontAwesomeIcon icon={faUserAlt} /> <span>Profile</span>
                             </Link>
                         </li>
                         <li>
-                            <Link to="/user/book" className="text-white side-bar-link">
+                            <Link to="/user/book" className="side-bar-link">
                                 <FontAwesomeIcon icon={faCartPlus} /> <span>Book</span>
                             </Link>
                         </li>
                         <li>
-                            <Link to="/user/booking-list" className="text-white side-bar-link">
+                            <Link to="/user/booking-list" className="side-bar-link">
                                 <FontAwesomeIcon icon={faBook} /> <span>Booking List</span>
                             </Link>
                         </li>
                         <li>
-                            <Link to="/user/review" className="text-white side-bar-link">
+                            <Link to="/user/review" className="side-bar-link">
                                 <FontAwesomeIcon icon={faCommentAlt} /> <span>Review</span>
                             </Link>
                         </li>
@@ -52,27 +52,27 @@ const Sidebar = () => {
                     mainPath === 'admin' &&
                     <>
                         <li>
-                            <Link to="/admin/client-list" className="text-white side-bar-link">
+                            <Link to="/admin/client-list" className="side-bar-link">
                                 <FontAwesomeIcon icon={faBook} /> <span>Client List</span>
                             </Link>
                         </li>
                         <li>
-                            <Link to="/admin/add-service" className="text-white side-bar-link">
+                            <Link to="/admin/add-service" className="side-bar-link">
                                 <FontAwesomeIcon icon={faPlus} /> <span>Add Service</span>
                             </Link>
                         </li>
                         <li>
-                            <Link to="/admin/make-admin" className="text-white side-bar-link">
+                            <Link to="/admin/make-admin" className="side-bar-link">
                                 <FontAwesomeIcon icon={faUser} /> <span>Make Admin</span>
                             </Link>
                         </li>
                         <li>
-                            <Link to="/admin/manage-service" className="text-white side-bar-link">
+                            <Link to="/admin/manage-service" className="side-bar-link">
                                 <FontAwesomeIcon icon={faThLarge} /> <span>Manage Service</span>
                             </Link>
                         </li>
                         <li>
-                            <Link to="/admin/manage-testimonials" className="text-white side-bar-link">
+                            <Link to="/admin/manage-testimonials" className="side-bar-link">
                                 <FontAwesomeIcon icon={faCommentAlt} /> <span>Manage Testimonials</span>
                             </Link>
                         </li>
@@ -81,7 +81,7 @@ const Sidebar = () => {
             </ul>
 
             <div>
-                <Link to="/" onClick={signOut} className="text-white side-bar-link"><FontAwesomeIcon icon={faSignOutAlt} /> <span>Logout</span></Link>
+                <Link to="/" onClick={signOut} className="side-bar-link"><FontAwesomeIcon icon={faSignOutAlt} /> <span>Logout</span></Link>
             </div>
         </div>
     );

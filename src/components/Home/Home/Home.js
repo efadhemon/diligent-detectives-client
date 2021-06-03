@@ -11,7 +11,7 @@ import OurTeam from '../OurTeam/OurTeam';
 
 const Home = () => {
     return (
-        <main className="home">
+        <main>
             <MainHeader></MainHeader>
             <Services></Services>
             <About></About>

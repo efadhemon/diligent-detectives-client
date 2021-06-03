@@ -13,7 +13,7 @@ section {
 }
 
 .input {
-    box-shadow: rgba(50, 50, 93, 0.109804) 0px 4px 6px, rgba(0, 0, 0, 0.0784314) 0px 1px 3px;
+    box-shadow: #32325d1c 0px 4px 6px, #00000014 0px 1px 3px;
     border: none;
     outline: none;
     padding: 10px;
@@ -91,39 +91,6 @@ section {
     background-color: black;
 }
 
-.button-box {
-    width: fit-content;
-    height: 110px;
-}
-
-.button-box a {
-    text-decoration: none;
-    padding: 18px 40px;
-    display: inline-block;
-    font-weight: 600;
-    font-size: 17px;
-    border-radius: 8px;
-    margin-top: 25px;
-    z-index: 999;
-    position: relative;
-    transition: 0.3s;
-}
-
-.btn-outline {
-    border: 1px solid #999;
-    width: 100%;
-    height: 56px;
-    border-radius: 9px;
-    margin-top: -35px;
-    margin-left: 18px;
-    transition: 0.3s;
-}
-
-.button-box:hover .btn-outline {
-    margin-top: -57px !important;
-    margin-left: -1px !important;
-}
-
 .width-50 {
     width: 50%;
 }
@@ -157,6 +124,22 @@ section {
     width: 100%;
     height: 90vh;
     overflow-y: scroll;
+}
+
+.background-light::-webkit-scrollbar {
+    width: 0 !important;
+}
+
+.background-light::-webkit-scrollbar-track {
+    background: transparent !important;
+}
+
+.background-light::-webkit-scrollbar-thumb {
+    background: none !important;
+}
+
+.background-light::-webkit-scrollbar-thumb:hover {
+    background: none !important;
 }
 
 .section-title {

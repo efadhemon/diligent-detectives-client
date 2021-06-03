@@ -50,6 +50,11 @@
     bottom: -20px;
 }
 
+.service-details .book-btn button {
+    font-weight: 500;
+    padding: 5px 15px;
+}
+
 .service-box:hover .service-details {
     overflow: visible;
 }

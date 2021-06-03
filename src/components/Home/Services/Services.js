@@ -33,23 +33,25 @@ const Services = () => {
                 <div className="display-grid-col-3">
 
                     {
-                        services.map(service => <div data-aos="fade-up" key={service._id} className="service-box" >
-                            <div className="service-image">
-                                <img src={service.image} alt="" />
-                            </div>
-                            <div className="service-details shadow">
-                                <h3>{service.name}</h3>
-                                <h4 className="text-brand">$ {service.cost}</h4>
-                                <p className="text-justif">{service.description}</p>
-                                <div className="book-btn">
-                                    <button onClick={() => handleService(service)} className="btn-brand">Book Service</button>
+                        services.map(service => <div data-aos="fade-up" key={service._id} className="d-flex">
+                            <div className="service-box" >
+                                <div className="service-image">
+                                    <img src={service.image} alt="" />
+                                </div>
+                                <div className="service-details shadow">
+                                    <h3>{service.name}</h3>
+                                    <h4 className="text-brand">$ {service.cost}</h4>
+                                    <p className="text-justif">{service.description.substr(1, 80)}</p>
+                                    <div className="book-btn">
+                                        <button onClick={() => handleService(service)} className="btn-brand">Book Service</button>
+                                    </div>
                                 </div>
                             </div>
                         </div>)
                     }
                 </div>
                 {
-                    services.length === 0 && <LoadingSpinner/>
+                    services.length === 0 && <LoadingSpinner />
                 }
             </div>
         </section>

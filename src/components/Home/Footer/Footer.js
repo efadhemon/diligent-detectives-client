@@ -102,20 +102,7 @@ const Footer = () => {
                 </div>
 
                 <div className="copy-right-container">
-                    <div className="row">
-                        <div className="col-md-6 order-md-6">
-                            <ul className="list-unstyled ml-auto">
-                                <li className="mr-4"><Link to="/">FAQS </Link></li>
-                                <li className="mr-4"><Link to="/">Privacy </Link></li>
-                                <li className="mr-4"><Link to="/">Policy </Link></li>
-                                <li className="mr-4"><Link to="/">Support</Link></li>
-                            </ul>
-                        </div>
-
-                        <div className="col-md-6">
-                            <p>Copyright &copy; {new Date().getFullYear()}, All rights reserved Emon</p>
-                        </div>
-                    </div>
+                    <p>Copyright &copy; {new Date().getFullYear()}, All rights reserved Emon</p>
                 </div>
 
             </div>
