@@ -1,11 +1,12 @@
 
-import React from 'react';
+import React, { useContext } from 'react';
 import { Redirect, Route } from 'react-router';
+import { UserContext } from '../../../App';
 
 
 const PrivateRoute = ({children, ...rest}) => {
     
-    const loggedInUser = JSON.parse(localStorage.getItem('loggedInUser')) || {} ;
+    const loggedInUser= useContext(UserContext)[0];
 
     return (
         <Route

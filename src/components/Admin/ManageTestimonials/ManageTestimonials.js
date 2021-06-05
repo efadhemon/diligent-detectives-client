@@ -8,7 +8,7 @@ import { faEdit } from '@fortawesome/free-regular-svg-icons';
 import EditTestimonialModal from './EditTestimonialModal';
 
 const ManageTestimonials = () => {
-    const [testimonials, setTestimonials] = useState([]);
+    const [testimonials, setTestimonials] = useState(null);
     const [editedTestimonial, setEditedTestimonial] = useState({});
     const [isEditedSuccess, setIsEditedSuccess] = useState(null);
 
@@ -28,6 +28,7 @@ const ManageTestimonials = () => {
                 setTestimonials(data);
             })
             .catch(err => {
+                setTestimonials(true);
                 swal('Sorry', err.message, 'error');
             })
     }, [isEditedSuccess])
@@ -78,15 +79,15 @@ const ManageTestimonials = () => {
 
 
     return (
-        <div className="testimonials-list">
+        <div className="manage-testimonials">
             <div className="d-flex justify-content-between align-items-center mt-3 title-padding">
                 <h1>Review List</h1>
                 <p className="text-center text-secondary"><span>Design By</span> <br /> <span> Developer Emon</span></p>
             </div>
-            <div className="background-light padding-5">
+            <div className="content-items padding-5">
 
                 {
-                    testimonials.length > 0 &&
+                    testimonials?.length > 0 &&
                     <div className="display-grid-col-3">
                         {
                             testimonials.map(testimonial => <div id={testimonial._id} key={testimonial._id} className="p-3 box-shadow rounded bg-white text-center">
@@ -105,8 +106,9 @@ const ManageTestimonials = () => {
                 }
 
                 {
-                    testimonials.length === 0 && <LoadingSpinner />
+                    !testimonials  && <LoadingSpinner /> 
                 }
+
 
                 <EditTestimonialModal modalIsOpen={modalIsOpen} closeModal={closeModal} isEditedSuccess={isEditedSuccess} setIsEditedSuccess={setIsEditedSuccess} editedTestimonial={editedTestimonial}></EditTestimonialModal>
 

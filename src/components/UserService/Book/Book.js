@@ -1,14 +1,15 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import './Book.css'
 import { useHistory } from 'react-router';
 import { Link } from 'react-router-dom';
 import ProcessPayment from '../ProcessPayment/ProcessPayment';
 import swal from 'sweetalert';
+import { UserContext } from '../../../App';
 
 const Book = () => {
 
   const serviceInfo = JSON.parse(sessionStorage.getItem('service')) || { status: null }
-  const clientInfo = JSON.parse(localStorage.getItem('loggedInUser')) || {}
+  const clientInfo = useContext(UserContext)[0];
 
   const history = useHistory();
 
@@ -38,7 +39,7 @@ const Book = () => {
         <h1>Book</h1>
         <p className="text-center text-secondary"><span>Design By</span> <br /> <span> Developer Emon</span></p>
       </div>
-      <div  className="background-light padding-5">
+      <div  className="content-items padding-5">
         <div style={{ display: serviceInfo.status === null ? 'none' : 'block' }}>
 
           <div className="booking-info width-50">

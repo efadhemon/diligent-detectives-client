@@ -43,7 +43,7 @@ const Services = () => {
                                     <h4 className="text-brand">$ {service.cost}</h4>
                                     <p className="text-justif">{service.description.substr(1, 80)}</p>
                                     <div className="book-btn">
-                                        <button onClick={() => handleService(service)} className="btn-brand">Book Service</button>
+                                        <button onClick={() => handleService(service)} className="btn-brand btn-circle">Book Service</button>
                                     </div>
                                 </div>
                             </div>

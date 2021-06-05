@@ -22,12 +22,12 @@ const MakeAdmin = () => {
     };
 
     return (
-        <div>
+        <div className="make-admin">
             <div className="d-flex justify-content-between align-items-center mt-3 title-padding">
                 <h1>Make Admin</h1>
                 <p className="text-center text-secondary"><span>Design By</span> <br /> <span> Developer Emon</span></p>
             </div>
-            <div className="background-light padding-5">
+            <div className="content-items padding-5">
                 <div className="bg-white padding-5 border-radius-10">
                     <form className="width-50" onSubmit={handleSubmit(onSubmit)}>
                         <div className="form-group">

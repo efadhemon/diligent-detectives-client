@@ -28,7 +28,7 @@ const BookingList = () => {
                 <h1>Booking List</h1>
                 <p className="text-center text-secondary"><span>Design By</span> <br /> <span> Developer Emon</span></p>
             </div>
-            <div id="booking-list-container" className="background-light padding-5">
+            <div id="booking-list-container" className="content-items padding-5">
 
                 {
                     booking?.length > 0 &&

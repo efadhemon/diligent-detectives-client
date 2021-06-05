@@ -11,6 +11,7 @@ export const initializeLoginFramework = () => {
     }
 }
 
+
 export const handleGoogleSignIn = () => {
     const googleProvider = new firebase.auth.GoogleAuthProvider();
     return firebase.auth().signInWithPopup(googleProvider)
@@ -79,14 +80,13 @@ export const handleSignOut = () => {
 export const createUserWithEmailAndPassword = (name, email, password) => {
     return firebase.auth().createUserWithEmailAndPassword(email, password)
         .then(res => {
-            const { displayName, email, photoURL } = res.user;
+            const { email, photoURL } = res.user;
             const signedInUser = {
-                name: displayName,
+                name: updateUserName(name),
                 email: email,
                 photo: photoURL,
                 success: true
             }
-            updateUserName(name);
             return signedInUser;
 
         })
@@ -108,6 +108,7 @@ export const signInWithEmailAndPassword = (email, password) => {
                 photo: photoURL,
                 success: true
             }
+            console.log(res.user);
             return signedInUser;
         })
         .catch(error => {

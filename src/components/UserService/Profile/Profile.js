@@ -1,13 +1,15 @@
-import React from 'react';
+import React, { useContext } from 'react';
+import { UserContext } from '../../../App';
 import './Profile.css';
+import AvatarFace from '../../../images/Avatar face.png';
 
 const Profile = () => {
 
-    const UserInfo = JSON.parse(localStorage.getItem('loggedInUser')) || {};
+    const [loggedInUser, setLoggedInUser] = useContext(UserContext);
 
     const handleLogout = () => {
         localStorage.removeItem('loggedInUser');
-        window.location.reload();
+        setLoggedInUser()
     }
 
     return (
@@ -16,11 +18,11 @@ const Profile = () => {
                 <h1>Profile</h1>
                 <p className="text-center text-secondary"><span>Design By</span> <br /> <span> Developer Emon</span></p>
             </div>
-            <div className="background-light padding-5">
+            <div className="content-items padding-5">
                 <div className="profile-info">
-                    <img className="rounded-circle shadow" src={UserInfo.photo} alt="" width="100" height="100" />
-                    <h2 className="mt-3">{UserInfo.name}</h2>
-                    <p>{UserInfo.email}</p>
+                    <img className="rounded-circle shadow" src={loggedInUser.photo ? loggedInUser.photo :AvatarFace} alt="" width="100" height="100" />
+                    <h2 className="mt-3">{loggedInUser.name}</h2>
+                    <p>{loggedInUser.email}</p>
 
                     <button onClick={handleLogout}>Log Out</button>
                 </div>

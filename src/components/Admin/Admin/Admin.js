@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import './Admin.css'
 import { useForm } from 'react-hook-form';
 import {
@@ -15,6 +15,7 @@ import ManageTestimonials from '../ManageTestimonials/ManageTestimonials';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTimes } from '@fortawesome/free-solid-svg-icons';
 import swal from 'sweetalert';
+import { UserContext } from '../../../App';
 
 
 const Admin = () => {
@@ -22,7 +23,7 @@ const Admin = () => {
     const [admin, setItem] = useState(localStorage.getItem('admin'));
     const testAdmin = 'admin.test@gmail.com';
 
-    const loggedInUser = JSON.parse(localStorage.getItem('loggedInUser')) || {};
+    const loggedInUser = useContext(UserContext)[0];
 
     const { register, handleSubmit, errors } = useForm();
 
@@ -34,7 +35,7 @@ const Admin = () => {
                 if (result.email === loggedInUser.email && result.secret_key === data.secret_key) {
                     setItem(result.email)
                     localStorage.setItem('admin', result.email);
-                }else if (result.email === testAdmin && result.secret_key === data.secret_key) {
+                } else if (result.email === testAdmin && result.secret_key === data.secret_key) {
                     setItem(result.email)
                     localStorage.setItem('admin', result.email);
                 } else if (result.secret_key !== data.secret_key) {
@@ -93,11 +94,11 @@ const Admin = () => {
     }
     else {
         return (
-            <div className="row margin-0">
-                <div className="col-md-2 padding-0">
-                    <Sidebar></Sidebar>
-                </div>
-                <div className="col-md-10 padding-0">
+            <div className="">
+
+                <Sidebar></Sidebar>
+
+                <div className="content">
                     <Switch>
                         <Route path="/admin/make-admin">
                             <MakeAdmin></MakeAdmin>

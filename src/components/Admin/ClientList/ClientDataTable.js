@@ -1,6 +1,7 @@
 import React from 'react';
+import swal from 'sweetalert';
 
-const ClientDataTable = ({ client, index }) => {
+const ClientDataTable = ({ client, index, isStatusUpdated, setIsStatusUpdated }) => {
 
     function updateStatus(e) {
         const newStatus = e.target.value;
@@ -14,7 +15,12 @@ const ClientDataTable = ({ client, index }) => {
             .then(res => res.json())
             .then(result => {
                 if (result) {
-                    alert('Status Change Successful')
+                    swal('Status Change Successful', 'success');
+                    if (isStatusUpdated) {
+                        setIsStatusUpdated(false);
+                    }else{
+                        setIsStatusUpdated(true);
+                    }
                 }
             })
     }

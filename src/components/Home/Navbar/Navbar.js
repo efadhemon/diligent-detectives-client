@@ -1,24 +1,27 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import './Navbar.css'
 import { Link } from 'react-router-dom';
-import AvatarFace from '../../../images/Avatar face.png'
+import AvatarFace from '../../../images/Avatar face.png';
+import { UserContext } from '../../../App';
+
+
 const Navbar = () => {
 
-    const loggedInUser = JSON.parse(localStorage.getItem('loggedInUser')) || {};
+    const [loggedInUser, setLoggedInUser] = useContext(UserContext);
+    const [isfixed, setFiexd] = useState(false);
 
     const showUserInfo = () => {
         const userInfo = document.getElementById('loggedIn-user-info');
         userInfo.classList.toggle('d-none')
     }
 
-    const signOut = () => {
+   const signOut = () => {
         localStorage.removeItem('loggedInUser')
         localStorage.removeItem('admin')
         document.getElementById('loggedIn-user-info').style.display = 'none';
-        window.location.reload();
-    }
+        setLoggedInUser({})
+    };
 
-    const [isfixed, setFiexd] = useState(false)
 
     useEffect(() => {
         window.addEventListener("scroll", () => {
@@ -60,14 +63,14 @@ const Navbar = () => {
                                     loggedInUser.email ?
                                         <img onClick={showUserInfo} className="nav-link user-avatar" src={loggedInUser.photo ? loggedInUser.photo : AvatarFace} alt="Avatar" />
                                         :
-                                        <Link className="nav-link login-btn " to="/login">Login</Link>
+                                        <Link className="nav-link login-btn" to="/login">Login</Link>
                                 }
                             </li>
 
                         </ul>
                     </div>
                 </div>
-                <div id="loggedIn-user-info" className="d-none">
+                <div id="loggedIn-user-info" className="d-none shadow">
                     <img src={loggedInUser.photo ? loggedInUser.photo : AvatarFace} alt="" />
                     <h4>{loggedInUser.name}</h4>
                     <p>{loggedInUser.email}</p>

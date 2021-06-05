@@ -77,10 +77,10 @@ const ManageService = () => {
                 <h1>Manage Service</h1>
                 <p className="text-center text-secondary"><span>Design By</span> <br /> <span> Developer Emon</span></p>
             </div>
-            <div className="background-light padding-5">
+            <div className="content-items padding-5">
                 <div className="bg-white p-3 border-radius-10">
                     <table className="table table-borderless text-center">
-                        <thead className="background-light">
+                        <thead className="bg-light">
                             <tr>
                                 <th className="text-secondary" scope="col">Sr No</th>
                                 <th className="text-secondary" scope="col">Service Name</th>

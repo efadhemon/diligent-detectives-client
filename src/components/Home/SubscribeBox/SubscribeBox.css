@@ -127,3 +127,10 @@ ul.MainMenuItem li:hover ul.sub-menu{
 	visibility: visible;
 	transform: scaleY(1);
 }
+
+@media (max-width: 575px) {
+    .subscribe-container{
+        background-color: #6c5ce7;
+        padding: 50px 0;
+    }
+}

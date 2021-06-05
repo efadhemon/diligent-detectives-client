@@ -32,7 +32,7 @@ const Contact = () => {
                             <textarea name="message" className="input" cols="30" rows="5" placeholder="Your Message"></textarea>
                         </div>
                         <div className="form-group text-center">
-                            <button style={{ width: "150px" }} type="button" className="btn-brand mx-auto">Submit</button>
+                            <button style={{ width: "150px" }} type="button" className="btn-brand mx-auto btn-circle">Submit</button>
                         </div>
                     </form>
                 </div>

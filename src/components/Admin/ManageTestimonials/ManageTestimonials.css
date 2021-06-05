@@ -20,6 +20,7 @@
     border: none;
     outline: none;
     font-size: 18px;
+    cursor: pointer;
 }
 .edit-btn svg{
     color: #ffffff;

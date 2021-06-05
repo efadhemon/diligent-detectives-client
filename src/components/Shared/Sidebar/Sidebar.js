@@ -8,40 +8,55 @@ const Sidebar = () => {
 
     const { pathname } = useLocation();
     const mainPath = pathname.split('/')[1];
+    const subpath = pathname.split('/')[2];
 
     const signOut = () => {
-        localStorage.removeItem('loggedInUser')
-        localStorage.removeItem('admin')
-        window.location.reload();
-    }
+        localStorage.removeItem('loggedInUser');
+        localStorage.removeItem('admin');
+    };
+
+    const handleSidebar = () => {
+        const navTogglerBtn = document.querySelector(".nav-toggler");
+        const sidebar = document.querySelector(".sidebar");
+        sidebar.classList.toggle("open");
+        navTogglerBtn.classList.toggle("open");
+    };
+
 
     return (
         <div className="sidebar d-flex flex-column justify-content-between py-5 px-4">
+
+            <div onClick={handleSidebar} className="nav-toggler">
+                <span></span>
+            </div>
+
             <ul className="list-unstyled">
-                <li>
-                    <Link to="/" className="side-bar-link">
-                        <h2> {'{D}'} Detectives</h2>
+
+                <li className="logo">
+                    <Link to="/" className="text-gradient">
+                        Detectives
                     </Link>
                 </li>
+
                 {mainPath === 'user' &&
                     <>
-                        <li>
-                            <Link to="/user" className="side-bar-link">
+                        <li onClick={handleSidebar}>
+                            <Link to="/user" className={subpath === undefined ? "side-bar-link active" : "side-bar-link"}>
                                 <FontAwesomeIcon icon={faUserAlt} /> <span>Profile</span>
                             </Link>
                         </li>
-                        <li>
-                            <Link to="/user/book" className="side-bar-link">
+                        <li onClick={handleSidebar}>
+                            <Link to="/user/book" className={subpath === 'book' ? "side-bar-link active" : "side-bar-link"}>
                                 <FontAwesomeIcon icon={faCartPlus} /> <span>Book</span>
                             </Link>
                         </li>
-                        <li>
-                            <Link to="/user/booking-list" className="side-bar-link">
+                        <li onClick={handleSidebar}>
+                            <Link to="/user/booking-list" className={subpath === 'booking-list' ? "side-bar-link active" : "side-bar-link"}>
                                 <FontAwesomeIcon icon={faBook} /> <span>Booking List</span>
                             </Link>
                         </li>
-                        <li>
-                            <Link to="/user/review" className="side-bar-link">
+                        <li onClick={handleSidebar}>
+                            <Link to="/user/review" className={subpath === 'review' ? "side-bar-link active" : "side-bar-link"}>
                                 <FontAwesomeIcon icon={faCommentAlt} /> <span>Review</span>
                             </Link>
                         </li>
@@ -51,28 +66,28 @@ const Sidebar = () => {
                 {
                     mainPath === 'admin' &&
                     <>
-                        <li>
-                            <Link to="/admin/client-list" className="side-bar-link">
+                        <li onClick={handleSidebar}>
+                            <Link to="/admin/client-list" className={subpath === 'client-list' ? "side-bar-link active" : "side-bar-link"}>
                                 <FontAwesomeIcon icon={faBook} /> <span>Client List</span>
                             </Link>
                         </li>
-                        <li>
-                            <Link to="/admin/add-service" className="side-bar-link">
+                        <li onClick={handleSidebar}>
+                            <Link to="/admin/add-service" className={subpath === 'add-service' ? "side-bar-link active" : "side-bar-link"}>
                                 <FontAwesomeIcon icon={faPlus} /> <span>Add Service</span>
                             </Link>
                         </li>
-                        <li>
-                            <Link to="/admin/make-admin" className="side-bar-link">
+                        <li onClick={handleSidebar}>
+                            <Link to="/admin/make-admin" className={subpath === 'make-admin' ? "side-bar-link active" : "side-bar-link"}>
                                 <FontAwesomeIcon icon={faUser} /> <span>Make Admin</span>
                             </Link>
                         </li>
-                        <li>
-                            <Link to="/admin/manage-service" className="side-bar-link">
+                        <li onClick={handleSidebar}>
+                            <Link to="/admin/manage-service" className={subpath === 'manage-service' ? "side-bar-link active" : "side-bar-link"}>
                                 <FontAwesomeIcon icon={faThLarge} /> <span>Manage Service</span>
                             </Link>
                         </li>
-                        <li>
-                            <Link to="/admin/manage-testimonials" className="side-bar-link">
+                        <li onClick={handleSidebar}>
+                            <Link to="/admin/manage-testimonials" className={subpath === 'manage-testimonials' ? "side-bar-link active" : "side-bar-link"}>
                                 <FontAwesomeIcon icon={faCommentAlt} /> <span>Manage Testimonials</span>
                             </Link>
                         </li>
@@ -81,7 +96,7 @@ const Sidebar = () => {
             </ul>
 
             <div>
-                <Link to="/" onClick={signOut} className="side-bar-link"><FontAwesomeIcon icon={faSignOutAlt} /> <span>Logout</span></Link>
+                <Link to="/" onClick={signOut} className="text-dark side-bar-link "><FontAwesomeIcon icon={faSignOutAlt} /> <span>Logout</span></Link>
             </div>
         </div>
     );

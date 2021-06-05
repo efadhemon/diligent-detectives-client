@@ -46,7 +46,7 @@ const Footer = () => {
 
                         <div className="contact-icon d-flex align-items-center mb-4">
                             <FontAwesomeIcon icon={faEnvelope} />
-                            <span> emonhossain0317@gmail.com <br /> emon.dev02@gmail.com</span>
+                            <span> emonhossain0317@gmail.com <br /> mohammademon551@gmail.com</span>
                         </div>
 
                     </div>

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import './Login.css'
 import { useState } from 'react';
 import { useHistory, useLocation } from 'react-router';
@@ -8,13 +8,14 @@ import { faEyeSlash, faEye, faTimes } from '@fortawesome/free-solid-svg-icons';
 import facebook from '../../../images/facebook.png';
 import google from '../../../images/google.png';
 import swal from 'sweetalert';
-import { Toaster } from 'react-hot-toast';
+import { UserContext } from '../../../App';
 
 
 
 const Login = () => {
 
-    const [fromValidationError, setFromValidationError] = useState('');
+    const [fromValidationError, setFromValidationError] = useState(null);
+    const setLoggedInUser = useContext(UserContext)[1];
 
     const [newUser, setNewUser] = useState(false)
     const [user, setUser] = useState({
@@ -52,9 +53,9 @@ const Login = () => {
 
         if (res.success && redirect) {
             setUser(res);
+            setLoggedInUser(res)
             localStorage.setItem('loggedInUser', JSON.stringify(res))
             history.replace(from);
-            window.location.reload()
         } else {
             swal('Error', res.error, 'error');
         }
@@ -76,7 +77,7 @@ const Login = () => {
                 setFromValidationError("password should must be a combination of letter and number and it's length greater than 8")
             }
             if (isFiledValid) {
-                setFromValidationError('')
+                setFromValidationError(null)
             }
 
         }
@@ -101,11 +102,7 @@ const Login = () => {
                 createUserWithEmailAndPassword(user.name, user.email, user.password)
                     .then(res => {
                         handleResponse(res, true);
-                        setFromValidationError('');
-                        <Toaster
-                            position="top-center"
-                            reverseOrder={false}
-                        />
+                        setFromValidationError(null);
                     })
             }
         }
@@ -205,9 +202,12 @@ const Login = () => {
                         <input className="input-field" type="password" onFocus={() => setFromValidationError('')} onBlur={handleChange} name="password" placeholder="Password" id="password" required />
                         <span onClick={showPassword} className="show-password"><FontAwesomeIcon id='show-password-icon' icon={togglePasswordIcon} /></span>
                     </div>
-                    <label htmlFor="forget-pass" className="d-flex align-items-center">
-                        <input type="checkbox" className="checkbox" id="forget-pass" />forget Password
-                    </label>
+
+                    <div className="d-flex align-items-center justify-content-between my-3">
+                        <label htmlFor="remember"><input type="checkbox" id="remember" /> Remember Me </label>
+                        <p className="forget-password">Forget Password</p>
+                    </div>
+
                     <input type="submit" className="submit-btn" value="Log In" />
                 </form>
 

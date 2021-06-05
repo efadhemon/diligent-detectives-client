@@ -52,7 +52,7 @@ const Review = () => {
                 <h1>Review</h1>
                 <p className="text-center text-secondary"><span>Design By</span> <br /> <span> Developer Emon</span></p>
             </div>
-            <div className="background-light">
+            <div className="content-items">
                 <form className="padding-5 width-50" onSubmit={handleSubmit(onSubmit)}>
                     <div className="form-group">
                         <input placeholder="Your Name" className="input" type="text" name="name" ref={register({ required: true })} />

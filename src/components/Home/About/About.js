@@ -20,7 +20,7 @@ const About = () => {
                             Lorem ipsum dolor sit amet consectetur adipisicing elit.  Tempore efacere amet aperiam non odio. Temporibus, nemo quasi quisquam ipsa distinctio saepe sed veniam incidunt, tempora mollitia, dignissimos repellendus expedita. Obcaecati minima, reiciendis optio aspernatur autem pariatur soluta illum velit, eligendi dolorem consequuntur sapiente rerum accusamus aut nulla praesentium! Neque autem animi, voluptatem magnam nesciunt officia nemo nam, delectus minima velit beatae iste praesentium ad repudiandae, similique excepturi sapiente.
                         </p>
                         <div className="text-right">
-                            <button className="btn-brand">Learn More</button>
+                            <button className="btn-brand btn-circle">Learn More</button>
                         </div>
                     </div>
                 </div>

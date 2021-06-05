@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { createContext, useEffect, useState } from 'react';
 import './App.css'
 import {
   BrowserRouter as Router,
@@ -21,6 +21,8 @@ window.addEventListener('load', function () {
   }, 2000)
 })
 
+export const UserContext = createContext();
+
 
 const App = () => {
 
@@ -28,26 +30,30 @@ const App = () => {
     aos.init({ duration: 2000 })
   }, [])
 
+  const [loggedInUser, setLoggedInUser] = useState(JSON.parse(localStorage.getItem('loggedInUser')) || {})
+
   return (
     <Router>
       <Preloader></Preloader>
-      <Switch>
-        <Route exact path='/'>
-          <Home></Home>
-        </Route>
-        <Route path='/home'>
-          <Home></Home>
-        </Route>
-        <PrivateRoute path='/user'>
-          <UserService></UserService>
-        </PrivateRoute>
-        <PrivateRoute path='/admin'>
-          <Admin></Admin>
-        </PrivateRoute>
-        <Route path='/login'>
-          <Login></Login>
-        </Route>
-      </Switch>
+      <UserContext.Provider value = {[loggedInUser, setLoggedInUser]}>
+        <Switch>
+          <Route exact path='/'>
+            <Home></Home>
+          </Route>
+          <Route path='/home'>
+            <Home></Home>
+          </Route>
+          <PrivateRoute path='/user'>
+            <UserService></UserService>
+          </PrivateRoute>
+          <PrivateRoute path='/admin'>
+            <Admin></Admin>
+          </PrivateRoute>
+          <Route path='/login'>
+            <Login></Login>
+          </Route>
+        </Switch>
+      </UserContext.Provider>
     </Router>
   );
 };
