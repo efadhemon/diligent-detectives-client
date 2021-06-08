@@ -112,7 +112,7 @@ const Admin = () => {
                             <ManageService admin={admin} testAdmin={testAdmin}></ManageService>
                         </Route>
                         <Route path="/admin/manage-testimonials">
-                            <ManageTestimonials></ManageTestimonials>
+                            <ManageTestimonials admin={admin} testAdmin={testAdmin}></ManageTestimonials>
                         </Route>
                     </Switch>
                 </div>
