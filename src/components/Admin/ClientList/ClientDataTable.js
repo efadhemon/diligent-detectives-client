@@ -15,12 +15,16 @@ const ClientDataTable = ({ client, index, isStatusUpdated, setIsStatusUpdated })
             .then(res => res.json())
             .then(result => {
                 if (result) {
-                    swal('Status Change Successful', 'success');
-                    if (isStatusUpdated) {
-                        setIsStatusUpdated(false);
-                    }else{
-                        setIsStatusUpdated(true);
-                    }
+                    swal('Status Change Successful', {
+                        icon: 'success'
+                    })
+                        .then(() => {
+                            if (isStatusUpdated) {
+                                setIsStatusUpdated(false);
+                            } else {
+                                setIsStatusUpdated(true);
+                            }
+                        })
                 }
             })
     }
