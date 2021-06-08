@@ -14,6 +14,29 @@ html {
     width: 100%;
 }
 
+.upload-photo{
+    color: #6c5ce7;
+    padding: 8px 20px;
+    font-size: 20px;
+    font-weight: 500;
+    border: 2px solid #6c5ce7;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.upload-photo:hover{
+    background-color: #6c5ce7;
+    color: #ffffff;
+}
+
+.upload-photo input {
+    display: none;
+}
+.upload-photo svg {
+    font-size: 25px;
+}
+
 .input::placeholder, textarea::placeholder {
     color: #8e97a1;
 }

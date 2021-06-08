@@ -1,16 +1,11 @@
 import React, { useContext } from 'react';
-import { UserContext } from '../../../App';
+import { handleLogout, UserContext } from '../../../App';
 import './Profile.css';
 import AvatarFace from '../../../images/Avatar face.png';
 
 const Profile = () => {
 
-    const [loggedInUser, setLoggedInUser] = useContext(UserContext);
-
-    const handleLogout = () => {
-        localStorage.removeItem('loggedInUser');
-        setLoggedInUser()
-    }
+    const loggedInUser = useContext(UserContext)[0];
 
     return (
         <div className="profile-section">

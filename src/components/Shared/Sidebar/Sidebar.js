@@ -3,17 +3,13 @@ import { Link, useLocation } from 'react-router-dom';
 import './Sidebar.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSignOutAlt, faCartPlus, faBook, faCommentAlt, faPlus, faUser, faThLarge, faUserAlt } from '@fortawesome/free-solid-svg-icons';
+import { handleLogout } from '../../../App';
 
 const Sidebar = () => {
 
     const { pathname } = useLocation();
     const mainPath = pathname.split('/')[1];
     const subpath = pathname.split('/')[2];
-
-    const signOut = () => {
-        localStorage.removeItem('loggedInUser');
-        localStorage.removeItem('admin');
-    };
 
     const handleSidebar = () => {
         const navTogglerBtn = document.querySelector(".nav-toggler");
@@ -96,7 +92,7 @@ const Sidebar = () => {
             </ul>
 
             <div>
-                <Link to="/" onClick={signOut} className="text-dark side-bar-link "><FontAwesomeIcon icon={faSignOutAlt} /> <span>Logout</span></Link>
+                <span  onClick={handleLogout} className="text-dark side-bar-link "><FontAwesomeIcon icon={faSignOutAlt} /> <span>Logout</span></span>
             </div>
         </div>
     );

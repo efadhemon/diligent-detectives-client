@@ -1,14 +1,14 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import './Book.css'
 import { useHistory } from 'react-router';
-import { Link } from 'react-router-dom';
 import ProcessPayment from '../ProcessPayment/ProcessPayment';
 import swal from 'sweetalert';
 import { UserContext } from '../../../App';
+import Services from '../../Home/Services/Services';
 
 const Book = () => {
 
-  const serviceInfo = JSON.parse(sessionStorage.getItem('service')) || { status: null }
+  const [serviceInfo, setServiceInfo] = useState(JSON.parse(sessionStorage.getItem('service')));
   const clientInfo = useContext(UserContext)[0];
 
   const history = useHistory();
@@ -27,20 +27,24 @@ const Book = () => {
       .then(data => {
         if (data) {
           swal('Thanks', 'Your Booking is Successful', 'success')
-          sessionStorage.removeItem('service');
-          history.push('/user/booking-list')
+            .then(() => {
+              sessionStorage.removeItem('service');
+              history.push('/user/booking-list')
+            })
         }
       })
   }
 
-  return (
-    <div className="book-section">
-      <div className="d-flex justify-content-between align-items-center mt-3 title-padding">
-        <h1>Book</h1>
-        <p className="text-center text-secondary"><span>Design By</span> <br /> <span> Developer Emon</span></p>
-      </div>
-      <div  className="content-items padding-5">
-        <div style={{ display: serviceInfo.status === null ? 'none' : 'block' }}>
+
+  if (serviceInfo) {
+
+    return (
+      <div className="book-section">
+        <div className="d-flex justify-content-between align-items-center mt-3 title-padding">
+          <h1>Book</h1>
+          <p className="text-center text-secondary"><span>Design By</span> <br /> <span> Developer Emon</span></p>
+        </div>
+        <div className="content-items padding-5">
 
           <div className="booking-info width-50">
             <input className="input" readOnly defaultValue={clientInfo.name} />
@@ -53,23 +57,26 @@ const Book = () => {
               <p className="text-secondary">Pay With</p>
               <label htmlFor="credit-card">
                 <input type="radio" id="credit-card" name="paymentMethod" defaultChecked={true} /> Credit Card
-              </label>
+                </label>
               <label htmlFor="paypal">
                 <input type="radio" id="paypal" name="paymentMethod" /> Paypal
-              </label>
+                </label>
             </div>
             <ProcessPayment serviceCost={serviceInfo.cost} handlePayment={handlePaymentSuccess}></ProcessPayment>
           </div>
         </div>
 
-        <div style={{ display: serviceInfo.status === null ? 'block' : 'none' }} className="text-center">
-          <h3>Go to Home page and select a service</h3>
-          <Link to='/'>Click here</Link>
-        </div>
       </div>
+    );
 
-    </div>
-  );
+  } else {
+    return (
+      <div className="text-center">
+        <Services setServiceInfo={setServiceInfo}></Services>
+      </div>
+    );
+  }
+
 };
 
 export default Book;

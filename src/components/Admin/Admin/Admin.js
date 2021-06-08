@@ -17,7 +17,6 @@ import { faTimes } from '@fortawesome/free-solid-svg-icons';
 import swal from 'sweetalert';
 import { UserContext } from '../../../App';
 
-
 const Admin = () => {
 
     const [admin, setItem] = useState(localStorage.getItem('admin'));
@@ -110,7 +109,7 @@ const Admin = () => {
                             <AddService></AddService>
                         </Route>
                         <Route path="/admin/manage-service">
-                            <ManageService></ManageService>
+                            <ManageService admin={admin} testAdmin={testAdmin}></ManageService>
                         </Route>
                         <Route path="/admin/manage-testimonials">
                             <ManageTestimonials></ManageTestimonials>

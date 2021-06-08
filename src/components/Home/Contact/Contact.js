@@ -1,7 +1,27 @@
 import React from 'react';
 import './Contact.css';
+import emailjs from 'emailjs-com';
+import swal from 'sweetalert';
+
 
 const Contact = () => {
+
+
+    function sendEmail(e) {
+        emailjs.sendForm('service_y92xc5v', 'template_2mlxp4j', e.target, 'user_gLcMXOYVs8qRUE4j64btb')
+            .then(() => {
+                swal('Your message has been sent', {
+                    icon: 'success'
+                })
+            }, () => {
+                swal('Something is wrong, please try again', {
+                    icon: 'success'
+                })
+            });
+        e.preventDefault();
+        e.target.reset();
+    }
+
     return (
         <section id="contact" className="contact">
             <div className="container">
@@ -16,7 +36,7 @@ const Contact = () => {
                 </div>
 
                 <div className="col-md-9 mx-auto">
-                    <form action="">
+                    <form onSubmit={sendEmail}>
                         <div className="form-group">
                             <input type="text" name="name" className="input" placeholder="Your Name" />
                         </div>
@@ -32,7 +52,7 @@ const Contact = () => {
                             <textarea name="message" className="input" cols="30" rows="5" placeholder="Your Message"></textarea>
                         </div>
                         <div className="form-group text-center">
-                            <button style={{ width: "150px" }} type="button" className="btn-brand mx-auto btn-circle">Submit</button>
+                            <input style={{ width: "150px" }} type="submit" className="btn-brand mx-auto btn-circle" value="Submit" />
                         </div>
                     </form>
                 </div>

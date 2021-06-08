@@ -55,12 +55,12 @@ const Footer = () => {
 
                         <h3>USEFUL LINKS</h3>
 
-                        <ul>
-                            <li><Link href="/"><FontAwesomeIcon icon={faChevronRight} />Home</Link></li>
-                            <li><Link href="/"><FontAwesomeIcon icon={faChevronRight} />About Us</Link></li>
-                            <li><Link href="/"><FontAwesomeIcon icon={faChevronRight} />Services</Link></li>
-                            <li><Link href="/"><FontAwesomeIcon icon={faChevronRight} />News</Link></li>
-                            <li><Link href="/"><FontAwesomeIcon icon={faChevronRight} />other</Link></li>
+                        <ul> 
+                            <li><Link to="/" ><FontAwesomeIcon icon={faChevronRight} />Home</Link></li>
+                            <li><Link to="/" ><FontAwesomeIcon icon={faChevronRight} />About Us</Link></li>
+                            <li><Link to="/" ><FontAwesomeIcon icon={faChevronRight} />Services</Link></li>
+                            <li><Link to="/" ><FontAwesomeIcon icon={faChevronRight} />Dashboard</Link></li>
+                            <li><Link to="/" ><FontAwesomeIcon icon={faChevronRight} />other</Link></li>
                         </ul>
 
                     </div>
@@ -75,7 +75,7 @@ const Footer = () => {
                             </div>
 
                             <div className="fRpostTitle">
-                                <h3><a href="/">WHERE WE'RE STANDING RIGHT NOW</a></h3>
+                                <h3><Link to='/' >WHERE WE'RE STANDING RIGHT NOW</Link></h3>
                                 <p><FontAwesomeIcon icon={faUser} />By Admin </p>
                                 <p><FontAwesomeIcon icon={faComments} />35</p>
                             </div>
@@ -89,8 +89,7 @@ const Footer = () => {
                             </div>
 
                             <div className="fRpostTitle">
-                                <h3><a href="/">AND MAYBE KNOWING ISN'T THE POINT</a></h3>
-
+                                <h3><Link to='/' >AND MAYBE KNOWING ISN'T THE POINT</Link></h3>
                                 <p><FontAwesomeIcon icon={faUser} />By Admin </p>
                                 <p><FontAwesomeIcon icon={faComments} />30</p>
                             </div>

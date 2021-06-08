@@ -121,6 +121,7 @@
 .side-bar-link {
     color:black;
     font-size: 18px;
+    cursor: pointer;
 }
 
 .side-bar-link.active {

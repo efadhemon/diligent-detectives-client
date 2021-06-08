@@ -5,7 +5,8 @@ import swal from 'sweetalert';
 const MakeAdmin = () => {
 
     const { register, handleSubmit, errors } = useForm();
-    const onSubmit = data => {
+
+    const onSubmit = (data, e) => {
         fetch('https://diligent-detectives-server.herokuapp.com/addAdmin', {
             method: 'POST',
             headers: {
@@ -14,9 +15,14 @@ const MakeAdmin = () => {
             body: JSON.stringify(data)
         })
             .then(res => res.json())
-            .then(admin => {
-                if (admin) {
-                    swal('Success', 'Admin Added', 'success');
+            .then(addSuccess => {
+                if (addSuccess) {
+                    swal('Admin Added Successful', {
+                        icon: 'success'
+                    })
+                    .then(() =>{
+                        e.target.reset();
+                    })
                 }
             })
     };

@@ -16,9 +16,13 @@ const BookingList = () => {
                 setBooking(data);
             })
             .catch(err => {
-                swal('Sorry', err.message, 'error');
-                setBooking(true);
-                document.getElementById('booking-list-container').innerHTML = `<h2 class="text-center text-danger m-5">Sorry Something Is Wrong</h2>`;
+                swal(err.message, {
+                    icon: 'error',
+                })
+                .then(() => {
+                    setBooking(true);
+                    document.getElementById('booking-list-container').innerHTML = `<h2 class="text-center text-danger m-5">Sorry Something Is Wrong</h2>`;
+                })
             })
     }, [clientInfo.email])
 
@@ -50,7 +54,7 @@ const BookingList = () => {
                 }
 
                 {
-                    !booking && <LoadingSpinner/>
+                    !booking && <LoadingSpinner />
                 }
 
                 {

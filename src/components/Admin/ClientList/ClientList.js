@@ -15,8 +15,9 @@ const ClientList = () => {
             .then(res => res.json())
             .then(data => setClients(data))
             .catch(err => {
-                setClients(true);
-                swal('Sorry', err.message, 'error');
+                swal( err.message, {
+                    icon: 'error',
+                });
             })
 
     }, [isStatusUpdated])

@@ -23,6 +23,11 @@ window.addEventListener('load', function () {
 
 export const UserContext = createContext();
 
+export const handleLogout = () => {
+  localStorage.removeItem('loggedInUser');
+  localStorage.removeItem('admin');
+  window.location.reload();
+}
 
 const App = () => {
 
@@ -38,9 +43,6 @@ const App = () => {
       <UserContext.Provider value = {[loggedInUser, setLoggedInUser]}>
         <Switch>
           <Route exact path='/'>
-            <Home></Home>
-          </Route>
-          <Route path='/home'>
             <Home></Home>
           </Route>
           <PrivateRoute path='/user'>

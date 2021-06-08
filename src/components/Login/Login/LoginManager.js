@@ -54,27 +54,6 @@ export const handleFbSingIn = () => {
         });
 }
 
-export const handleSignOut = () => {
-    return firebase.auth().signOut()
-        .then(result => {
-            const signOutUser = {
-                isSignedIn: false,
-                name: '',
-                email: '',
-                photo: ''
-            }
-            console.log(result);
-            return signOutUser
-        })
-        .catch(error => {
-            console.log(error);
-            const errorInfo = {};
-            errorInfo.error = error.message;
-            errorInfo.success = false;
-            return errorInfo;
-        })
-}
-
 
 
 export const createUserWithEmailAndPassword = (name, email, password) => {

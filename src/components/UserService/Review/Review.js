@@ -1,3 +1,5 @@
+import { faCloudUploadAlt } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import axios from 'axios';
 import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
@@ -22,7 +24,7 @@ const Review = () => {
             });
     }
 
-    const onSubmit = data => {
+    const onSubmit = (data, e) => {
         if (imageUrl === null) {
             swal('Please', 'Wait Image Url is processing', 'warning');
         }
@@ -36,14 +38,16 @@ const Review = () => {
                 body: JSON.stringify(newReview)
             })
                 .then(res => res.json())
-                .then(data => {
-                    if (data) {
-                        swal('Success', 'Thanks for your review', 'success');
+                .then((addSuccess) => {
+                    if (addSuccess) {
+                        swal('Thanks for your review', {
+                            icon: 'success'
+                        })
+                            .then(() => e.target.reset())
                     }
                 })
         }
     };
-
 
 
     return (
@@ -63,17 +67,19 @@ const Review = () => {
                         {errors.from && <span className="text-danger">This field is required</span>}
                     </div>
                     <div className="form-group">
-                        <textarea placeholder="Your comment" className="input" type="text" name="quote" ref={register({ required: true })} />
+                        <textarea placeholder="Your comment in 200 letter" className="input" type="text" name="quote" ref={register({ required: true })} />
                         {errors.quote && <span className="text-danger">This field is required</span>}
                     </div>
-                    <div className="form-group">
-                        <input className="input" type="file" onChange={handleImageUpload} id="upload-photo" name="image" ref={register({ required: true })} />
-                        {errors.image && <span className="text-danger">This field is required</span>}
+                    <div className="d-flex align-items-center justify-content-between">
+                        <label className="upload-photo" htmlFor="upload-photo"> <FontAwesomeIcon icon={faCloudUploadAlt} /> Upload a Image
+                            <input className="input" type="file" onChange={handleImageUpload} id="upload-photo" name="image" ref={register({ required: true })} />
+                        </label>
 
+                        <div className="text-right">
+                            <input className="btn-brand" type="submit" value="Submit" />
+                        </div>
                     </div>
-                    <div className="text-right">
-                        <input className="btn-brand" type="submit" value="Submit" />
-                    </div>
+                    {errors.image && <span className="text-danger d-block">This field is required</span>}
                 </form>
             </div>
         </div>

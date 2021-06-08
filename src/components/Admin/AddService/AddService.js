@@ -1,6 +1,9 @@
+import { faCloudUploadAlt } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import axios from 'axios';
 import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
+import swal from 'sweetalert';
 
 const AddService = () => {
     const { register, handleSubmit, errors } = useForm();
@@ -20,9 +23,11 @@ const AddService = () => {
             });
     }
 
-    const onSubmit = data => {
+    const onSubmit = (data, e) => {
         if (imageUrl == null) {
-            alert('Please Wait Image Url is processing');
+            swal('Please Wait Image Url is processing', {
+                icon: 'warning',
+            })
         }
         else {
             const newService = { ...data, image: imageUrl }
@@ -36,8 +41,11 @@ const AddService = () => {
                 .then(res => res.json())
                 .then(data => {
                     if (data) {
-                        alert('Service Successfully Added')
-                 window.location.reload()
+                        swal('Service Successfully Added', {
+                            icon: 'success',
+                        })
+                        .then( () => e.target.reset())
+                                        
                     }
                 })
         }
@@ -49,30 +57,33 @@ const AddService = () => {
                 <h1>Add Service</h1>
                 <p className="text-center text-secondary"><span>Design By</span> <br /> <span> Developer Emon</span></p>
             </div>
-            <div  className="content-items padding-5">
+            <div className="content-items padding-5">
                 <form className="width-50" onSubmit={handleSubmit(onSubmit)}>
                     <div className="form-group">
                         <label htmlFor="name">Service Name</label>
                         <input className="input" type="text" name="name" placeholder="type here" ref={register({ required: true })} id="name" />
-                        {errors.name && <span>This field is required</span>}
+                        {errors.name && <span className="text-danger">This field is required</span>}
                     </div>
                     <div className="form-group">
                         <label htmlFor="cost">Service Cost (only use number)</label>
                         <input className="input" type="text" name="cost" placeholder="type here" ref={register({ required: true })} id="cost" />
-                        {errors.cost && <span>This field is required</span>}
+                        {errors.cost && <span className="text-danger">This field is required</span>}
                     </div>
                     <div className="form-group">
-                        <label htmlFor="description">Service Description</label>
+                        <label htmlFor="description">Service Description (in 100 letter)</label>
                         <textarea className="input" type="text" name="description" placeholder="type here" ref={register({ required: true })} id="description" />
-                        {errors.description && <span>This field is required</span>}
+                        {errors.description && <span className="text-danger" >This field is required</span>}
                     </div>
-                    <div className="form-group">
-                        <label htmlFor="upload-photo">Upload A Image</label>
-                        <input className="input" type="file" onChange={handleImageUpload} id="upload-photo" required />
+                    <div className="d-flex align-items-center justify-content-between">
+                        <label className="upload-photo" htmlFor="service-photo"> <FontAwesomeIcon icon={faCloudUploadAlt} /> Upload a Image
+                            <input className="input" type="file" onChange={handleImageUpload} id="service-photo" name="image" ref={register({ required: true })} />
+                        </label>
+
+                        <div className="text-right">
+                            <input className="btn-brand" type="submit" value="Submit" />
+                        </div>
                     </div>
-                    <div className="text-right">
-                        <input className="btn-brand" type="submit" value="Submit" />
-                    </div>
+                    {errors.image && <span className="text-danger d-block">This field is required</span>}
                 </form>
             </div>
         </div>

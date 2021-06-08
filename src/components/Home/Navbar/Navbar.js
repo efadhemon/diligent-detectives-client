@@ -2,40 +2,33 @@ import React, { useContext, useEffect, useState } from 'react';
 import './Navbar.css'
 import { Link } from 'react-router-dom';
 import AvatarFace from '../../../images/Avatar face.png';
-import { UserContext } from '../../../App';
+import { handleLogout, UserContext } from '../../../App';
 
 
 const Navbar = () => {
 
-    const [loggedInUser, setLoggedInUser] = useContext(UserContext);
-    const [isfixed, setFiexd] = useState(false);
+    const loggedInUser = useContext(UserContext)[0];
+    const [isFixed, setIsFixed] = useState(false);
 
     const showUserInfo = () => {
         const userInfo = document.getElementById('loggedIn-user-info');
         userInfo.classList.toggle('d-none')
     }
 
-   const signOut = () => {
-        localStorage.removeItem('loggedInUser')
-        localStorage.removeItem('admin')
-        document.getElementById('loggedIn-user-info').style.display = 'none';
-        setLoggedInUser({})
-    };
-
 
     useEffect(() => {
         window.addEventListener("scroll", () => {
             if (window.scrollY > 50) {
-                setFiexd(true)
+                setIsFixed(true)
             } else {
-                setFiexd(false)
+                setIsFixed(false)
             }
         })
     }, []);
 
     return (
         <header className="header">
-            <nav className={isfixed ? "navbar navbar-expand-lg navbar-light fixed-top shadow-sm bg-white" : "navbar navbar-expand-lg navbar-light bg-white"}>
+            <nav className={isFixed ? "navbar navbar-expand-lg navbar-light fixed-top shadow-sm bg-white" : "navbar navbar-expand-lg navbar-light bg-white"}>
                 <div className="container-fluid">
                     <Link className="navbar-brand brand-logo text-gradient" to="/">Diligent Detectives</Link>
                     <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -74,7 +67,7 @@ const Navbar = () => {
                     <img src={loggedInUser.photo ? loggedInUser.photo : AvatarFace} alt="" />
                     <h4>{loggedInUser.name}</h4>
                     <p>{loggedInUser.email}</p>
-                    <button className="logout-btn" onClick={signOut}>Log Out</button>
+                    <button className="logout-btn" onClick={handleLogout}>Log Out</button>
                 </div>
             </nav>
         </header>
