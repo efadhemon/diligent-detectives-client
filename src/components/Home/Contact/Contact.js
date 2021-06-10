@@ -18,8 +18,8 @@ const Contact = () => {
                     icon: 'success'
                 })
             });
-        e.preventDefault();
         e.target.reset();
+        e.preventDefault();
     }
 
     return (
@@ -38,18 +38,18 @@ const Contact = () => {
                 <div className="col-md-9 mx-auto">
                     <form onSubmit={sendEmail}>
                         <div className="form-group">
-                            <input type="text" name="name" className="input" placeholder="Your Name" />
+                            <input type="text" name="name" className="input" placeholder="Your Name" required />
                         </div>
                         <div className="row">
                             <div className="form-group col-md-6">
-                                <input type="email" name="email" className="input" placeholder="Your Email" />
+                                <input type="email" name="email" className="input" placeholder="Your Email" required />
                             </div>
                             <div className="form-group col-md-6">
-                                <input type="text" name="subject" className="input" placeholder="Subject" />
+                                <input type="text" name="subject" className="input" placeholder="Subject" required />
                             </div>
                         </div>
                         <div className="form-group">
-                            <textarea name="message" className="input" cols="30" rows="5" placeholder="Your Message"></textarea>
+                            <textarea name="message" className="input" cols="30" rows="5" placeholder="Your Message" required></textarea>
                         </div>
                         <div className="form-group text-center">
                             <input style={{ width: "150px" }} type="submit" className="btn-brand mx-auto btn-circle" value="Submit" />
